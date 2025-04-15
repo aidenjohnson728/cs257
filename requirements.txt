@@ -1,0 +1,19 @@
+Teammates: Alden Harcourt and Aiden Johnson
+
+Our dataset compiles all ultimate frisbee games played in the 2025 USAU D1 and D3 regular seasons (no postseason games are in the dataset). This dataset includes the two teams that played each other and their respective points by the end of the game. The dataset also details what tournament the game was played at and the game’s date. This dataset was acquired via email exchange with the owner of the site frisbee-rankings.com (who also coaches Cal-Poly Slo). 
+
+User Stories: 
+
+As a Division 1 Ultimate fan, I can access the current rankings through clicking on the Leaderboard page, so that all teams and their rankings are visible to me.
+
+As a Division 3 Ultimate coach, I can access my team’s performance throughout the season by clicking on the Timeline page, so that I can examine my team’s progress over time. 
+
+As an Ultimate Parent, I can use the search function to look up the individual team my child is a part of, so that I can see how my kid’s team is doing this current season. 
+
+As an Ultimate player, I can look up my team using the search function, so that I can see how many points my team won in our last game. 
+
+As a college ultimate fan, I can find teams which are statistical outliers this season, such as the teams who have played the least games or scored the most points etc., by clicking on the Outliers tab, so I can gain knowledge on notable teams this season.
+
+As a D1 or D3 ultimate fan, I can check the Circle of Suck tab to see a list of games, if one exists, that my favorite team has won which show through the transitive property that my favorite team is better than another given team, so that I can win arguments with my friends.
+
+
