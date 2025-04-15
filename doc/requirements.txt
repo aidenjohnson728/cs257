@@ -1,0 +1,44 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Teammates: Alden Harcourt and Aiden Johnson
+\f1\fs24 \
+\
+
+\f0\fs29\fsmilli14667 Our dataset compiles all ultimate frisbee games played in the 2025 USAU D1 and D3 regular seasons (no postseason games are in the dataset). This dataset includes the two teams that played each other and their respective points by the end of the game. The dataset also details what tournament the game was played at and the game\'92s date. This dataset was acquired via email exchange with the owner of the site frisbee-rankings.com (who also coaches Cal-Poly Slo).\'a0
+\f1\fs24 \
+\
+
+\f0\fs29\fsmilli14667 User Stories:\'a0
+\f1\fs24 \
+\
+
+\f0\fs29\fsmilli14667 As a Division 1 Ultimate fan, I can access the current rankings through clicking on the Leaderboard page, so that all teams and their rankings are visible to me.
+\f1\fs24 \
+\
+
+\f0\fs29\fsmilli14667 As a Division 3 Ultimate coach, I can access my team\'92s performance throughout the season by clicking on the Timeline page, so that I can examine my team\'92s progress over time.\'a0
+\f1\fs24 \
+\
+
+\f0\fs29\fsmilli14667 As an Ultimate Parent, I can use the search function to look up the individual team my child is a part of, so that I can see how my kid\'92s team is doing this current season.\'a0
+\f1\fs24 \
+\
+
+\f0\fs29\fsmilli14667 As an Ultimate player, I can look up my team using the search function, so that I can see how many points my team won in our last game.\'a0
+\f1\fs24 \
+\
+
+\f0\fs29\fsmilli14667 As a college ultimate fan, I can find teams which are statistical outliers this season, such as the teams who have played the least games or scored the most points etc., by clicking on the Outliers tab, so I can gain knowledge on notable teams this season.
+\f1\fs24 \
+\
+
+\f0\fs29\fsmilli14667 As a D1 or D3 ultimate fan, I can check the Circle of Suck tab to see a list of games, if one exists, that my favorite team has won which show through the transitive property that my favorite team is better than another given team, so that I can win arguments with my friends.
+\f1\fs24 \
+}
