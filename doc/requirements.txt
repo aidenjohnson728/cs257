@@ -9,22 +9,34 @@ User Stories:
 
 As a Division 1 Ultimate fan, I can access the current rankings through clicking on the Leaderboard page, 
 so that all teams and their rankings are visible to me.
+-To implement this we will have a tab at the top of the home page which sends the user to the leaderboard which has an option for D1 or D3. 
+  We would rank these teams by implimenting the standard college ranking algorithm. 
 
 As a Division 3 Ultimate coach, I can access my team’s performance throughout the season by clicking on the Timeline page, 
 so that I can examine my team’s progress over time. 
+-To implement this, for each team's page there will be a timeline tab which the user can click on.
+  This will display the ranking of the given team throughout the season.
 
 As an Ultimate Parent, I can use the search function to look up the individual team my child is a part of, 
 so that I can see how my kid’s team is doing this current season. 
+-To implement this, there will be a search bar at the top of the home page which the user can type in any given team.
+  Clicking enter will display the given team's games they have played this season including who they played and the score.
 
 As an Ultimate player, I can look up my team using the search function, 
 so that I can see how many points my team won in our last game. 
+-To implement this, there will be a search bar at the top of the home page which the user can type in any given team.
+  Clicking enter will display the given team's games they have played this season including who they played and the score.
 
 As a college ultimate fan, I can find teams which are statistical outliers this season, 
 such as the teams who have played the least games or scored the most points etc., 
 by clicking on the Outliers tab, so I can gain knowledge on notable teams this season.
+-To implement this, there will be an outliers tab which the user can click on.
+  This will display a number of outlier stats like "superlatives" and the corresponding team which holds the statistic.
 
 As a D1 or D3 ultimate fan, I can check the Circle of Suck tab to see a list of games, 
 if one exists, that my favorite team has won which show through the transitive property that my favorite team is better than another given team, 
 so that I can win arguments with my friends.
+-To implement this there will be a Circle of Suck tab which the user can click on.
+  This will bring the user to an interface where they can enter any two teams and if a circle of suck (Team A beat team B who beat team C, therefore team A is better than team C) exists for the two teams, the sequence will be displayed.
 
 
