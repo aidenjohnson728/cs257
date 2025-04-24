@@ -1,0 +1,39 @@
+﻿DESIGN PARTNERS: Aiden Johnson and Alden Harcourt
+
+
+REQUEST: /leaderboard?<rankingalgorithm>
+RESPONSE: a list of team names ranked according to the given ranking algorithm. 
+
+
+        rankingalgorithm – (STRING) Options are: Simple Weighted Composite Index, Margin of Victory ELO, or Massey Rating. If no rankingalgorithm is provided, default to the Simple Weighted Composite Index.
+
+
+REQUEST: /circleofsuck?<teamone><teamtwo>
+RESPONSE: If there is a sequence of teams which teamone has beat that leads to a victory over teamtwo, this will return a list of the teams leading to teamone’s supremacy over teamtwo.
+
+
+Teamone - (STRING) A team who has played in a USAU sanctioned tournament in 2025
+        Teamtwo - (STRING) Another team who has played in a USAU sanctioned tournament in 2025
+
+
+REQUEST:/outliers
+RESPONSE: A list of JSON dictionaries containing fun facts. Of the format {fun_fact : team_name} 
+
+
+REQUEST:/teams/title_contains/{search_text}
+RESPONSE: A list of teams, whose team names include search_text.
+        search_text – (STRING) a string inputted by the user.
+        
+REQUEST: /teampage?<teamname><rankingalgorithm>
+RESPONSE: A list of dictionaries for each opponent the given team (teamname) has played. Each dictionary will include the opponent, score, date, tournament. This will return a list of integers for the given team’s ranking throughout the season corresponding to the ranking algorithm, defaulting to the Simple Weighted Composite Index ranking.
+        teamname – (STRING) A team who has played in a USAU sanctioned tournament in 2025
+rankingalgorithm - (STRING) Options are: Simple Weighted Composite Index, Margin of Victory ELO, or Massey Rating. If no rankingalgorithm is provided, default to the Simple Weighted Composite Index.
+
+
+ranking – (INT) the ranking for a team at a given point in the season corresponding to the rankingalgorithm. 
+
+
+Example: 
+        /teampage?team=Carleton College (CUT)&rankingalgorithm=masseyrating
+        [{“opponent=Alabama Huntsville (nightmares)”, “score”=”13-2”, “ranking”=”3”, “date”=”02-01-2025”, “event”=”Florida Warmup”}
+… The rest of the games CUT played in the above format…]
