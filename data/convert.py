@@ -97,6 +97,8 @@ def generate_tables(input_file):
 
     print("✅ Generated teams.csv, matches.csv, results.csv, and fun_facts.csv.")
 
+
+# ChatGPT wrote sections 5) 6) and 7) of this function.
 def generate_rankings():
     # --- 1) Load teams.csv ---
     team_ids = []
@@ -175,7 +177,8 @@ def generate_rankings():
                 weights['margin_pct'] * margin_pct +
                 weights['sos'] * sos)
 
-    # --- 5) Elo ---
+    # The following Elo rating system was written by ChatGPT
+    #  --- 5) Elo ---
     elo = np.full(n, 1500.0)
     K = 20
     def update_elo(r_i, r_j, s_i, s_j):
@@ -185,7 +188,6 @@ def generate_rankings():
         k_eff = K * mf
         return (r_i + k_eff*(score_i - e_i), r_j + k_eff*((1-score_i)-(1-e_i)))
 
-    # --- 6) Rankings ---
     rank_history = {tid: [] for tid in team_ids}
     prev_rank = {tid: np.inf for tid in team_ids}
     def record_snapshot(algo, scores, date):
@@ -198,7 +200,9 @@ def generate_rankings():
                 rank_history[tid].append({'algorithm':algo,'as_of_date':date,'rank':int(ranks[idx])})
         return {tid: ranks[id_to_idx[tid]] for tid in team_ids}
 
-    # --- 7) Process Tournaments ---
+    # Process Tournaments 
+    # Records tournament start and end dates to ensure that rankings are only updated once per tournament
+    # This section was written by ChatGPT
     tourney_ends = {}
     for g in games:
         tourney_ends[g['tournament']] = max(tourney_ends.get(g['tournament'], g['date']), g['date'])
@@ -210,6 +214,9 @@ def generate_rankings():
         prev_rank = record_snapshot('SWCI', swci_scores, end_date)
         prev_rank = record_snapshot('ELO', elo, end_date)
         A = np.zeros((n,n)); b = np.zeros(n)
+
+        # Massey least squares rating
+        # The following Massey rating system was written by ChatGPT
         for g in filter(lambda x: x['date']<=end_date, games):
             i = id_to_idx[g['team1_id']]; j = id_to_idx[g['team2_id']]
             m = g['score1'] - g['score2']
