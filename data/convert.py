@@ -224,8 +224,12 @@ def generate_rankings():
         writer = csv.writer(f)
         writer.writerow(['team_id','algorithm','as_of_date','rank'])
         for tid in team_ids:
+            # Group rankings by date and algorithm
+            written_dates = set()
             for rec in rank_history[tid]:
-                writer.writerow([tid, rec['algorithm'], rec['as_of_date'].strftime('%Y-%m-%d'), rec['rank']])
+                if rec['as_of_date'] in tourney_ends.values() and (rec['as_of_date'], rec['algorithm']) not in written_dates:
+                    writer.writerow([tid, rec['algorithm'], rec['as_of_date'].strftime('%Y-%m-%d'), rec['rank']])
+                    written_dates.add((rec['as_of_date'], rec['algorithm']))
     print("✅ rankings.csv generated.")
 
 if __name__ == '__main__':
