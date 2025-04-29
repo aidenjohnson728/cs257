@@ -3,7 +3,6 @@
 rankings_generator.py
 
 Generates per-tournament ranking snapshots for SWCI, ELO, and Massey.
-Outputs rankings_tuned.csv with columns: team_id,algorithm,as_of_date,rank
 """
 import csv
 from datetime import datetime
@@ -142,7 +141,7 @@ for tourney, end_date in sorted(tourney_ends.items(), key=lambda x: x[1]):
     massey, *_ = lstsq(A, b)
     prev_rank = record_snapshot('Massey', massey, end_date)
 
-# --- 9) Export rankings_tuned.csv ---
+# --- 9) Export rankings.csv ---
 with open('rankings.csv', 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
     writer.writerow(['team_id','algorithm','as_of_date','rank'])
