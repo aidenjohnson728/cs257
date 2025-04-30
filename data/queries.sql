@@ -9,5 +9,5 @@ WHERE fun_facts.team_id = 30;
 
 
 SELECT matches.tournament, matches.match_date
-johnsona7-> FROM matches 
-johnsona7-> WHERE match.match_id = 1658;
+FROM matches 
+WHERE match.match_id = 1658;
