@@ -1,3 +1,6 @@
+# Made by Aiden Johnson and Alden Harcourt 
+# Sections 5, 6 and 7 - (lines 184-191, 208-229) are written by ChatGPT
+
 import sys
 import csv
 from datetime import datetime
