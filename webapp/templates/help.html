@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ultimate Frisbee API reference</title>
+</head>
+<body>
+    <pre>Ultimate Frisbee API: endpoint reference
+All responses are in JSON
+
+REQUEST: /leaderboard?algorithm={SWCI, ELO, or Massey} (optional; defaults to SWCI)
+RESPONSE:
+    Returns the leaderboard as of March 30th for all teams, ordered by rank under the chosen algorithm.
+    Each entry includes:
+        "name": <team name string>
+        "rank": <integer>
+
+REQUEST: /MTIBTYT?teamOne={Team One Name}&teamTwo={Team Two Name}
+RESPONSE:
+    (My-Team-Is-Better-Than-Your-Team)
+    Returns an array of team names forming the “beat” chain from Team One to Team Two,
+    where each team beat the next. Both parameters are required and must match exactly
+    (copy names from /teams if needed). If no chain exists, returns a 404 error.
+
+REQUEST: /fun_facts
+RESPONSE:
+    Returns an array of fun facts for teams. Each entry includes:
+        "fact": <string>
+        "team": <team name string>
+
+REQUEST: /teams
+RESPONSE:
+    Returns an array of all team names, sorted alphabetically. Each entry includes:
+        "name": <team name string>
+
+REQUEST: /teampage?team={Team Name}&algorithm={SWCI, ELO, or Massey} (algorithm optional; defaults to SWCI)
+RESPONSE:
+    Returns an object with two keys:
+        "matches": [
+            {
+                "match_date":     "YYYY-MM-DD",
+                "tournament":     "Tournament Name",
+                "opponent_name":  "Opponent School (Team Name)",
+                "our_score":      <integer>,
+                "opponent_score": <integer>
+            },
+            …
+        ],
+        "rankings": [
+            { "date": "YYYY-MM-DD", "rank": <integer> },
+            …
+        ]
+    - "matches" shows all games the team played this season (newest first).
+    - "rankings" shows the team’s rank history under the chosen algorithm.
+    </pre>
+</body>
+</html>

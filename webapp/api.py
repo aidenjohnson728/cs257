@@ -3,6 +3,7 @@ import flask
 import sys
 import config
 from collections import deque
+import argparse
 
 
 app = flask.Flask(__name__)
@@ -15,12 +16,13 @@ def get_connection():
                                 password=config.password)
     except Exception as e:
         print(e, file=sys.stderr)
-        exit()
 
 #endpoitn for leaderboard. Usage: /leaderboard?algorithm=SWCI (or ELO or Massey)
 @app.route('/leaderboard')
 def leaderboard_endpoint():
     algo = flask.request.args.get('algorithm')
+    if not algo:
+        algo = 'Massey'
     if algo not in ('SWCI', 'ELO', 'Massey'):
         return flask.jsonify({'error': 'Invalid ranking algorithm'}), 400
 
@@ -71,7 +73,7 @@ def get_MTIBTYT(teamOne, teamTwo):
     try:
         connection = get_connection()
         cursor = connection.cursor()
-        query = 'SELECT team_id, name FROM teams;'
+        query = 'SELECT team_id, name FROM teams'
         cursor.execute(query)
         team_rows = cursor.fetchall()
         name_to_id = {name: tid for tid, name in team_rows}
@@ -155,10 +157,16 @@ def get_fun_facts():
     try:
         connection = get_connection()
         cursor = connection.cursor()
-        query = 'SELECT * FROM fun_facts'
+        query = '''SELECT fun_facts.fun_fact, teams.name AS team_name
+                    FROM fun_facts
+                    JOIN teams ON fun_facts.team_id = teams.team_id
+                    ORDER BY fun_facts.fact_id'''
         cursor.execute(query)
-        for row in cursor:
-            fun_facts.append({'fact': row[0], 'team': row[1]})
+        for fun_fact, team_name in cursor:
+            fun_facts.append({
+                'fact': fun_fact,
+                'team': team_name
+            })
     except Exception as e:
         print(e, file=sys.stderr)
     finally:
@@ -191,7 +199,7 @@ def teampage_endpoint():
     if not team:
         return flask.jsonify({'error': 'Missing team parameter'}), 400
     if not algorithm:
-        algorithm = 'SWCI'
+        algorithm = 'Massey'
     if algorithm not in ('SWCI', 'ELO', 'Massey'):
         return flask.jsonify({'error': 'Invalid ranking algorithm'}), 400
     if not team_exists(team):
@@ -213,7 +221,7 @@ def get_matches(team):
                     JOIN teams opp ON results.opponent_id = opp.team_id
                     JOIN teams team ON results.team_id = team.team_id
                     WHERE team.name = %s
-                    ORDER BY matches.match_date DESC;'''
+                    ORDER BY matches.match_date DESC'''
         cursor.execute(query, (team,))
         for row in cursor:
             matches.append({
@@ -251,6 +259,19 @@ def get_ranking_records(team, algorithm):
         connection.close()
 
     return ranking_records
+
+@app.route('/help')
+def get_help():
+    return flask.render_template('help.html')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser('An Ultimate Frisbee API')
+    parser.add_argument('host', help='the host on which this application is running')
+    parser.add_argument('port', type=int, help='the port on which this application is listening')
+    arguments = parser.parse_args()
+    app.run(host=arguments.host, port=arguments.port, debug=True)
+
                 
 
         
