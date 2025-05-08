@@ -157,15 +157,16 @@ def get_fun_facts():
     try:
         connection = get_connection()
         cursor = connection.cursor()
-        query = '''SELECT fun_facts.fun_fact, teams.name AS team_name
+        query = '''SELECT fun_facts.fun_fact, teams.name AS team_name, fun_facts.value
                     FROM fun_facts
                     JOIN teams ON fun_facts.team_id = teams.team_id
                     ORDER BY fun_facts.fact_id'''
         cursor.execute(query)
-        for fun_fact, team_name in cursor:
+        for fun_fact, team_name, value in cursor:
             fun_facts.append({
                 'fact': fun_fact,
-                'team': team_name
+                'team': team_name,
+                'value': value
             })
     except Exception as e:
         print(e, file=sys.stderr)
