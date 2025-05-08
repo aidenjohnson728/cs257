@@ -63,7 +63,7 @@ def generate_tables(input_file):
     largest_point_diff_team = max(point_differentials, key=point_differentials.get)
     smallest_point_diff_team = min(point_differentials, key=point_differentials.get)
     most_points_team = max(total_points, key=total_points.get)
-
+    
     # Add fun facts to the list
     fun_facts.append([1, most_games_team, "The team that played the most games"])
     fun_facts.append([2, largest_point_diff_team, "The team with the largest point differential"])

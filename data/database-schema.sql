@@ -27,5 +27,6 @@ CREATE TABLE rankings (
 CREATE TABLE fun_facts (
     fact_id integer NOT NULL,
     team_id integer NOT NULL,
-    fun_fact text
+    fun_fact text,
+    value integer NOT NULL
 );
