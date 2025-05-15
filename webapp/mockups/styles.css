@@ -1,3 +1,5 @@
+/* For lefthand navbar*/
+
 nav, 
 #navbar, 
 div[id="nav bar"] {
@@ -61,6 +63,7 @@ body {
   margin-top: 75px;  
 }
 
+/* For algorithm dropdown menu */
 #algorithm {
   position: relative;
   display: inline-block;
@@ -86,4 +89,29 @@ body {
 #algorithm li {
   list-style: none;
   padding: 6px 12px;
+}
+/* For MTIBTYT flex box layout */
+.panel-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;   
+}
+#team1,
+#team2 {
+  width: 50%;
+  height: 66.6666%;
+  box-sizing: border-box;
+  /* optional styling */
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  overflow: auto;
+}
+#chain {
+  width: 100%;
+  height: 33.3333%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  overflow: auto;
 }
