@@ -1,17 +1,16 @@
 nav, 
 #navbar, 
 div[id="nav bar"] {
-  position: fixed;       /* stay in place */
+  position: fixed;     
   top: 0;
   left: 0;
-  width: 200px;          /* adjust as needed */
-  height: 100vh;         /* full viewport height */
-  background-color: #ccffcc; /* light green */
+  width: 125px;         
+  height: 100vh;       
+  background-color: #ccffcc; 
   padding-top: 20px;
   box-sizing: border-box;
 }
 
-/* 2. Remove default list styling and spacing */
 nav ul,
 #navbar ul,
 div[id="nav bar"] ul {
@@ -20,24 +19,71 @@ div[id="nav bar"] ul {
   padding: 0;
 }
 
-/* 3. Style each link */
 nav li a,
 #navbar li a,
 div[id="nav bar"] li a {
-  display: block;           /* fill the horizontal space */
+  display: block;         
   padding: 12px 16px;
   color: #000;
   text-decoration: none;
 }
 
-/* 4. Hover effect */
 nav li a:hover,
 #navbar li a:hover,
 div[id="navbar"] li a:hover {
   background-color: #b3e6b3;
 }
 
-/* 5. Push page content to the right so it doesn't sit under the nav */
+
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;              
+  background-color: #77A479; 
+  display: flex;
+  align-items: center;
+  padding-left: 220px;        
+  box-sizing: border-box;
+  font-size: 1.5em;
+  font-weight: bold;
+  z-index: 1000;             
+}
+
+#navbar {
+  top: 60px;                  
+  height: calc(100vh - 60px); 
+}
+
 body {
-  margin-left: 225px;  /* same as nav width */
+  margin-left: 150px; 
+  margin-top: 75px;  
+}
+
+#algorithm {
+  position: relative;
+  display: inline-block;
+  padding: 8px;
+  background: #ccffcc;
+  cursor: pointer;
+}
+
+#algorithm ul {
+  display: none;
+  position: absolute;
+  top: 100%;    
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: #ccffcc;
+}
+
+#algorithm:hover ul {
+  display: block;
+}
+
+#algorithm li {
+  list-style: none;
+  padding: 6px 12px;
 }
