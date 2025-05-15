@@ -1,5 +1,5 @@
 nav, 
-#nav-bar, 
+#navbar, 
 div[id="nav bar"] {
   position: fixed;       /* stay in place */
   top: 0;
@@ -13,7 +13,7 @@ div[id="nav bar"] {
 
 /* 2. Remove default list styling and spacing */
 nav ul,
-#nav-bar ul,
+#navbar ul,
 div[id="nav bar"] ul {
   list-style: none;
   margin: 0;
@@ -22,7 +22,7 @@ div[id="nav bar"] ul {
 
 /* 3. Style each link */
 nav li a,
-#nav-bar li a,
+#navbar li a,
 div[id="nav bar"] li a {
   display: block;           /* fill the horizontal space */
   padding: 12px 16px;
@@ -32,12 +32,12 @@ div[id="nav bar"] li a {
 
 /* 4. Hover effect */
 nav li a:hover,
-#nav-bar li a:hover,
-div[id="nav bar"] li a:hover {
+#navbar li a:hover,
+div[id="navbar"] li a:hover {
   background-color: #b3e6b3;
 }
 
 /* 5. Push page content to the right so it doesn't sit under the nav */
 body {
-  margin-left: 200px;  /* same as nav width */
+  margin-left: 225px;  /* same as nav width */
 }
