@@ -1,14 +1,13 @@
-/* For lefthand navbar*/
-
-nav, 
-#navbar, 
+/* For lefthand navbar */
+nav,
+#navbar,
 div[id="nav bar"] {
-  position: fixed;     
+  position: fixed;
   top: 0;
   left: 0;
-  width: 125px;         
-  height: 100vh;       
-  background-color: #ccffcc; 
+  width: 125px;
+  height: 100vh;
+  background-color: #ccffcc;
   padding-top: 20px;
   box-sizing: border-box;
 }
@@ -24,7 +23,7 @@ div[id="nav bar"] ul {
 nav li a,
 #navbar li a,
 div[id="nav bar"] li a {
-  display: block;         
+  display: block;
   padding: 12px 16px;
   color: #000;
   text-decoration: none;
@@ -36,82 +35,171 @@ div[id="navbar"] li a:hover {
   background-color: #b3e6b3;
 }
 
-
+/* Topbar */
 #topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;              
-  background-color: #77A479; 
+  height: 60px;
+  background-color: #77A479;
   display: flex;
   align-items: center;
-  padding-left: 220px;        
+  padding-left: 220px;
   box-sizing: border-box;
   font-size: 1.5em;
   font-weight: bold;
-  z-index: 1000;             
+  z-index: 1000;
 }
 
 #navbar {
-  top: 60px;                  
-  height: calc(100vh - 60px); 
+  top: 60px;
+  height: calc(100vh - 60px);
 }
 
 body {
-  margin-left: 150px; 
-  margin-top: 75px;  
+  margin-left: 150px;
+  margin-top: 75px;
 }
 
-/* For algorithm dropdown menu */
-#algorithm {
+/* 1. Base dropdown container */
+.dropdown {
   position: relative;
-  display: inline-block;
-  padding: 8px;
-  background: #ccffcc;
+  display: inline-block;       /* shrink‐wrap to content */
   cursor: pointer;
+  background: #ccffcc;         /* match your theme */
+  padding: 6px 12px;
+  border-radius: 4px;
+  user-select: none;
+  align-self: flex-start;  
 }
 
-#algorithm ul {
+
+.dropdown > ul {
   display: none;
   position: absolute;
-  top: 100%;    
+  top: 100%;   
   left: 0;
   margin: 0;
   padding: 0;
   background: #ccffcc;
+  list-style: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  z-index: 10;
 }
 
-#algorithm:hover ul {
+.dropdown:hover > ul {
   display: block;
 }
 
-#algorithm li {
-  list-style: none;
+.dropdown li {
   padding: 6px 12px;
 }
-/* For MTIBTYT flex box layout */
+.dropdown li:hover {
+  background: #b3e6b3;
+}
+
+
+/* MTIBTYT flex‐box layout */
+/* MTIBTYT flex‐box layout */
 .panel-container {
+  position: absolute;
+  top: 75px;    /* your body’s margin-top */
+  left: 140px;  /* your body’s margin-left */
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#MTIBTYT-container {           
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;   
+}
+
+
+#MTIBTYT-container > #team1,
+#MTIBTYT-container > #team2 {
+  width: 50%;
+  height: 55%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  overflow: visible;
+}
+
+/* restore the chain panel styling */
+#MTIBTYT-container > #chain {
+  width: 100%;
+  height: 33%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  overflow: auto;
+}
+
+#chain ul {
+  display: flex;       
+  list-style: none;    
+  margin: 0;
+  padding: 0;
+  gap: 1em;            
+}
+
+#teams-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 100%;   
+  height: 100%;
 }
-#team1,
-#team2 {
-  width: 50%;
-  height: 66.6666%;
-  box-sizing: border-box;
-  /* optional styling */
-  border: 1px solid #ccc;
-  background: #f9f9f9;
-  overflow: auto;
-}
-#chain {
+
+#teams-container > #page-title {
   width: 100%;
-  height: 33.3333%;
+  height: 10%;
   box-sizing: border-box;
   border: 1px solid #ccc;
   background: #f9f9f9;
   overflow: auto;
+  text-align: center;
 }
+
+#teams-container > #games {
+  width: 50%;
+  height: 80%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  overflow: auto;
+  display: flex;
+}
+
+#rank {
+  display: flex;           
+  flex-direction: column;  
+}
+
+#teams-container > #rank {
+  width: 50%;
+  height: 80%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  overflow: auto;
+  display: flex;
+}
+
+#rank img {
+  max-width: 100%;   
+  height: auto;        
+}
+
+
+
+
+
+
+
