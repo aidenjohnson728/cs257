@@ -57,7 +57,7 @@ def get_leaderboard(algorithm):
         '''
         cursor.execute(query, (algorithm, algorithm))
         for row in cursor:
-            leaderboard.append({'name': row[0], 'rank': row[1]})
+            leaderboard.append({'rank': row[1], 'team': row[0]})
     except Exception as e:
         print(e, file=sys.stderr)
     finally:
