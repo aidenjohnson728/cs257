@@ -1,47 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <title>Frisbee Stats</title>
+  <meta charset="utf-8" />
+  <title>Frisbee Stats</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-    <div id="topbar">Frisbee Stats</div>
-    <h2 class="leaderboard-title">
-        Leaderboard
-    </h2>
-    <div id="leaderboard-container">
+  <div id="topbar">Frisbee Stats</div>
+  <h2 class="leaderboard-title">Leaderboard</h2>
+
+  <div id="leaderboard-container">
     <div class="leaderboard-box">
-        <table>
-            <tr><th>Rank</th><th>Team</th></tr>
-            <tr><td>1</td><td>CUT</td></tr>
-            <tr><td>2</td><td>CHOP</td></tr>
-            <tr><td>3</td><td>Karls</td></tr>
-        </table>
+      <table>
+        <tr><th>Rank</th><th>Team</th></tr>
+        <tr><td>1</td><td>CUT</td></tr>
+        <tr><td>2</td><td>CHOP</td></tr>
+        <tr><td>3</td><td>Karls</td></tr>
+      </table>
     </div>
 
-<div id = "leaderboard-dropdown" class = "dropdown">
-    <p>Choose a ranking algorithm (default=Massey):</p>
+    <div id="leaderboard-dropdown" class="dropdown">
+      <p>Choose a ranking algorithm (default=Massey):</p>
+      <ul>
+        <li>Massey</li>
+        <li>ELO</li>
+        <li>SWCI</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="navbar">
     <ul>
-        <li> Massey </li>
-        <li>  ELO </li>
-        <li> SWCI </li>
+      <li><a href="mockup1.html">Home</a></li>
+      <li><a href="mockup5.html">Teams</a></li>
+      <li><a href="mockup2.html">Leaderboard</a></li>
+      <li><a href="mockup3.html">MTIBTYT</a></li>
+      <li><a href="mockup4.html">Fun Facts</a></li>
     </ul>
-</div>  
-</div>     
-
-
-<div id = "navbar"> 
-    <ul>
-        <li><a href ="mockup1.html"> Home</a></li>
-        <li><a href="mockup5.html"> Teams </a></li>
-        <li><a href="mockup2.html"> Leaderboard </a></li>
-        <li><a href="mockup3.html"> MTIBTYT </a></li>
-        <li><a href="mockup4.html"> Fun Facts </a></li>
-        
-    </ul>
-</div>
-
+  </div>
 </body>
 </html>
