@@ -104,14 +104,18 @@ body {
 /* MTIBTYT flex‐box layout */
 /* MTIBTYT flex‐box layout */
 .panel-container {
-  position: absolute;
-  top: 75px;    /* your body’s margin-top */
-  left: 140px;  /* your body’s margin-left */
+  margin-left: 140px;
+  margin-top: 20px;
   right: 0;
   bottom: 0;
-
   display: flex;
   flex-wrap: wrap;
+
+  /* position: absolute;
+  top: 75px;    /* your body’s margin-top */
+  /*left: 140px;  /* your body’s margin-left */
+  
+
 }
 
 #MTIBTYT-container {           
@@ -198,7 +202,43 @@ body {
   height: auto;        
 }
 
+.leaderboard-box {
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
+/* table formatting inside the box */
+.leaderboard-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard-box th,
+.leaderboard-box td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.leaderboard-box th {
+  background-color: #e6ffe6;
+  font-weight: bold;
+}
+
+#MTIBTYT-container > .leaderboard-box {
+  flex: 1 1 45%;
+  margin: 10px;
+  max-width: none; /* Override the 500px limit if needed */
+}
+
+#MTIBTYT-container > .leaderboard-box#chain {
+  flex-basis: 100%;
+}
 
 
 
