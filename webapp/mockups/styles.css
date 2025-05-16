@@ -60,14 +60,15 @@ div[id="navbar"] li a:hover {
 body {
   margin-left: 150px;
   margin-top: 75px;
+  background-color: #f0faf0;
 }
 
-/* 1. Base dropdown container */
+/* Base dropdown container */
 .dropdown {
   position: relative;
   display: inline-block;       /* shrink‐wrap to content */
   cursor: pointer;
-  background: #ccffcc;         /* match your theme */
+  background: #ccffcc;         /* match the theme */
   padding: 6px 12px;
   border-radius: 4px;
   user-select: none;
@@ -106,14 +107,12 @@ body {
 .panel-container {
   margin-left: 140px;
   margin-top: 20px;
-  right: 0;
-  bottom: 0;
   display: flex;
   flex-wrap: wrap;
 
   /* position: absolute;
-  top: 75px;    /* your body’s margin-top */
-  /*left: 140px;  /* your body’s margin-left */
+  top: 75px;    /* the body’s margin-top */
+  /*left: 140px;  /* the body’s margin-left */
   
 
 }
@@ -136,7 +135,7 @@ body {
   overflow: visible;
 }
 
-/* restore the chain panel styling */
+/* restores the chain panel styling */
 #MTIBTYT-container > #chain {
   width: 100%;
   height: 33%;
@@ -203,11 +202,6 @@ body {
 }
 
 
-
-
-
-
-
 .leaderboard-box {
   border: 2px solid #ccc;
   border-radius: 12px;
@@ -218,12 +212,13 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* I looked up how to round my boxes to create a more sleek design, found at https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius /*
+/* Also, I looked up how to create a box shadow at https://www.w3schools.com/css/css3_shadows_box.asp /*
+
 /* table formatting inside the box */
 .leaderboard-box table {
   width: 100%;
-  border-collapse: collapse;
 }
-
 .leaderboard-box th,
 .leaderboard-box td {
   padding: 10px;
@@ -239,7 +234,7 @@ body {
 #MTIBTYT-container > .leaderboard-box {
   flex: 1 1 45%;
   margin: 10px;
-  max-width: none; /* Override the 500px limit if needed */
+  max-width: none; 
 }
 
 #MTIBTYT-container > .leaderboard-box#chain {
