@@ -8,9 +8,10 @@
 
 <body>
     <div id="topbar">Frisbee Stats</div>
-    <h2>
+    <h2 class="leaderboard-title">
         Leaderboard
     </h2>
+    <div id="leaderboard-container">
     <div class="leaderboard-box">
         <table>
             <tr><th>Rank</th><th>Team</th></tr>
@@ -20,14 +21,15 @@
         </table>
     </div>
 
-<p>Choose a ranking algorithm (default=Massey):</p>
-<div class = "dropdown">
+<div id = "leaderboard-dropdown" class = "dropdown">
+    <p>Choose a ranking algorithm (default=Massey):</p>
     <ul>
         <li> Massey </li>
         <li>  ELO </li>
         <li> SWCI </li>
     </ul>
-</div>       
+</div>  
+</div>     
 
 
 <div id = "navbar"> 

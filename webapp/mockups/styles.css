@@ -211,7 +211,6 @@ body {
   max-width: 500px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 /* I looked up how to round my boxes to create a more sleek design, found at https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius /*
 /* Also, I looked up how to create a box shadow at https://www.w3schools.com/css/css3_shadows_box.asp /*
 
@@ -219,6 +218,7 @@ body {
 .leaderboard-box table {
   width: 100%;
 }
+
 .leaderboard-box th,
 .leaderboard-box td {
   padding: 10px;
