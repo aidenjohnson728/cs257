@@ -198,21 +198,23 @@ body {
 
 #leaderboard-container {
   display: flex;
-  flex-direction: column; /* stack children top-to-bottom */
-  margin-left: 150px;     /* same as body margin-left */
-  margin-top: 75px;       /* same as body margin-top */
+  align-items: flex-start;             
+  margin-left: 150px;        
+  margin-top: 0px;        
 }
 
-
 .leaderboard-box {
+  width: 65%;
   border: 2px solid #ccc;
   border-radius: 12px;
   padding: 20px;
-  margin: 20px 0;
+  margin: 20px;
   background-color: #f9f9f9;
   max-width: 500px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+
 
 /* table formatting inside the box */
 .leaderboard-box table {
@@ -240,6 +242,23 @@ body {
 
 #MTIBTYT-container > .leaderboard-box#chain {
   flex-basis: 100%;
+}
+
+#leaderboard-dropdown{
+  display: flex;
+  width: 35%;
+  height: 10%;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2.leaderboard-title {
+  text-align: center;
 }
 
 
