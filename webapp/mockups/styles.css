@@ -60,26 +60,25 @@ div[id="navbar"] li a:hover {
 body {
   margin-left: 150px;
   margin-top: 75px;
-  background-color: #f0faf0;
+  background-color: #f0faf0; /* from GitHub version */
 }
 
 /* Base dropdown container */
 .dropdown {
   position: relative;
-  display: inline-block;       /* shrink‐wrap to content */
+  display: inline-block;       /* shrink-wrap to content */
   cursor: pointer;
   background: #ccffcc;         /* match the theme */
   padding: 6px 12px;
   border-radius: 4px;
   user-select: none;
-  align-self: flex-start;  
+  align-self: flex-start;
 }
-
 
 .dropdown > ul {
   display: none;
   position: absolute;
-  top: 100%;   
+  top: 100%;
   left: 0;
   margin: 0;
   padding: 0;
@@ -97,33 +96,31 @@ body {
 .dropdown li {
   padding: 6px 12px;
 }
+
 .dropdown li:hover {
   background: #b3e6b3;
 }
 
-
-/* MTIBTYT flex‐box layout */
-/* MTIBTYT flex‐box layout */
+/* MTIBTYT flex-box layout */
 .panel-container {
   margin-left: 140px;
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
+}
 
-  /* position: absolute;
-  top: 75px;    /* the body’s margin-top */
-  /*left: 140px;  /* the body’s margin-left */
-  
-
+h2.MTIBTYT-title {
+  text-align: center;
 }
 
 #MTIBTYT-container {           
   display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
   height: 100%;
   width: 100%;   
+  padding-left: 50px;
 }
-
 
 #MTIBTYT-container > #team1,
 #MTIBTYT-container > #team2 {
@@ -137,12 +134,18 @@ body {
 
 /* restores the chain panel styling */
 #MTIBTYT-container > #chain {
-  width: 100%;
+  width: 73%;
   height: 33%;
   box-sizing: border-box;
   border: 1px solid #ccc;
   background: #f9f9f9;
   overflow: auto;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;              
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #chain ul {
@@ -153,17 +156,17 @@ body {
   gap: 1em;            
 }
 
+/* Teams page layout */
 #teams-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 100%;
   height: calc(100vh - 75px);
 }
 
 #teams-container > #page-title {
   width: 100%;
-  height: 10%;
+  height: 12%;
   box-sizing: border-box;
   border: 1px solid #ccc;
   background: #f9f9f9;
@@ -171,9 +174,10 @@ body {
   text-align: center;
 }
 
-#teams-container > #games {
+#teams-container > #games,
+#teams-container > #rank {
   width: 50%;
-  height: 80%;
+  height: auto;           /* let content define height */
   box-sizing: border-box;
   border: 1px solid #ccc;
   background: #f9f9f9;
@@ -181,67 +185,89 @@ body {
   display: flex;
 }
 
+/* rank panel inner layout */
 #rank {
   display: flex;           
   flex-direction: column;  
 }
 
-#teams-container > #rank {
-  width: 50%;
-  height: 80%;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
-  overflow: auto;
-  display: flex;
+#rank img {
+  max-width: 100%;
+  height: auto;
 }
 
-#rank img {
-  max-width: 100%;   
-  height: auto;        
+/* Leaderboard page layout */
+#leaderboard-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-left: 150px;
+  margin-top: 0;              
 }
 
 
 .leaderboard-box {
+  width: 65%;                
+  max-width: 500px;           
   border: 2px solid #ccc;
   border-radius: 12px;
   padding: 20px;
-  margin: 20px 0;
+  margin: 20px 0;              
   background-color: #f9f9f9;
-  max-width: 500px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-/* I looked up how to round my boxes to create a more sleek design, found at https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius /*
-/* Also, I looked up how to create a box shadow at https://www.w3schools.com/css/css3_shadows_box.asp /*
 
-/* table formatting inside the box */
 .leaderboard-box table {
   width: 100%;
 }
-
 .leaderboard-box th,
 .leaderboard-box td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
-
 .leaderboard-box th {
   background-color: #e6ffe6;
   font-weight: bold;
 }
 
-#MTIBTYT-container > .leaderboard-box {
-  flex: 1 1 45%;
-  margin: 10px;
-  max-width: none; 
+#leaderboard-dropdown {
+  display: flex;
+  width: 35%;
+  height: 10%;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;              
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-#MTIBTYT-container > .leaderboard-box#chain {
-  flex-basis: 100%;
+#leaderboard-dropdown ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background: #ccffcc;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  z-index: 10;
+}
+#leaderboard-dropdown:hover ul {
+  display: block;
+}
+#leaderboard-dropdown li {
+  padding: 6px 12px;
+}
+#leaderboard-dropdown li:hover {
+  background: #b3e6b3;
 }
 
-
-
-
+h2.leaderboard-title {
+  text-align: center;
+}
 
