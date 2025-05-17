@@ -26,8 +26,8 @@ def get_connection():
 def leaderboard_endpoint():
     algo = flask.request.args.get('algorithm')
     if not algo:
-        algo = 'Massey'   # default algorithm
-    if algo not in ('SWCI', 'ELO', 'Massey'):
+        algo = 'USAU'   # default algorithm
+    if algo not in ('SWCI', 'ELO', 'Massey', 'USAU'):
         return flask.jsonify({'error': 'Invalid ranking algorithm'}), 400
 
     lb = get_leaderboard(algo)    
@@ -238,8 +238,8 @@ def teampage_endpoint():
     if not team:
         return flask.jsonify({'error': 'Missing team parameter'}), 400
     if not algorithm:
-        algorithm = 'Massey'  # default
-    if algorithm not in ('SWCI', 'ELO', 'Massey'):
+        algorithm = 'USAU'  # default
+    if algorithm not in ('SWCI', 'ELO', 'Massey', 'USAU'):
         return flask.jsonify({'error': 'Invalid ranking algorithm'}), 400
     if not team_exists(team):
         return flask.jsonify({'error': 'Team does not exist'}), 400
