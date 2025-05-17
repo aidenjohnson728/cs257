@@ -199,16 +199,22 @@ def generate_rankings():
         ke = K * mf
         return (ri + ke*(score_i - e_i), rj + ke*((1-score_i)-(1-e_i)))
 
+
     # record snapshots
     history = {tid: [] for tid in team_ids}
-    prev_rank = {tid: float('inf') for tid in team_ids}
     def record_snapshot(algo, scores, date):
-        order = np.argsort(-scores); ranks = np.empty_like(order)
-        for rk, idx in enumerate(order, start=1): ranks[idx] = rk
+        order = np.argsort(-scores, kind='stable')
+        ranks = np.empty_like(order)
+        for rk, idx in enumerate(order, start=1):
+            ranks[idx] = rk
         for idx, tid in i2id.items():
-            if algo == 'USAU' or prev_rank[tid] != ranks[idx]:
-                history[tid].append({'algorithm': algo, 'as_of_date': date, 'rank': int(ranks[idx])})
+            history[tid].append({
+                'algorithm': algo,
+                'as_of_date': date,
+                'rank': int(ranks[idx])
+            })
         return {tid: ranks[id2i[tid]] for tid in team_ids}
+
 
     # process tournaments sequentially
     ends = {}
