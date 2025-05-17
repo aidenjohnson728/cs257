@@ -206,6 +206,13 @@ h2.MTIBTYT-title {
 }
 
 
+/* I wanted to round the boxes for a sleeker design, so I looked up how to do it, and then
+repurposed the code we already had to make round boxes. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius */
+
+/* Additionally, I wanted to make a box shadow to make the boxes pop out more. So I also found a source to do that 
+and repurposed our working box code, Source: https://www.w3schools.com/css/css3_shadows_box.asp */
+
+
 .leaderboard-box {
   width: 65%;                
   max-width: 500px;           
@@ -219,7 +226,6 @@ h2.MTIBTYT-title {
 
 .leaderboard-box table {
   width: 100%;
-  border-collapse: collapse;
 }
 .leaderboard-box th,
 .leaderboard-box td {
