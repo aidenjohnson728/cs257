@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='frisbee.js') }}" ></script>
     <title>Frisbee Stats</title>
 </head>
 <body>
@@ -17,11 +18,7 @@
             <p>Select a team from the dropdown menu</p>
             <div class="dropdown">
               <h3>Team 1</h3>
-              <ul>
-                <li>Air Force</li>
-                <li>Pacific Lutheran</li>
-                <li>Whitman</li>
-                <li>...</li>
+              <ul id="team1_list">
               </ul>
             </div>
         </div>
@@ -31,11 +28,7 @@
             <p>Select a team from the dropdown menu</p>
             <div class="dropdown">
               <h3>Team 2</h3>
-              <ul>
-                <li>Air Force</li>
-                <li>Pacific Lutheran</li>
-                <li>Whitman</li>
-                <li>...</li>
+              <ul id="team2_list">
               </ul>
             </div>
         </div>

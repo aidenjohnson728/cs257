@@ -7,7 +7,11 @@ function initialize() {
     }
      if (document.getElementById("games")) {
         getGames();
+        getTeamName();
         getRankHistory();
+     }
+     if (document.getElementById("team1_list")) {
+        loadTeamsDropdown();
      }
 }   
 
@@ -96,11 +100,32 @@ function getGames() {
     });
 
     gamesHTML += '</table>';
+    titleHTML = '<h2>' + team + '</h2>';
 
-     let selector = document.getElementById('games');
-        if (selector) {
-            selector.innerHTML = gamesHTML;
+    let selector = document.getElementById('page-title');
+    if (selector) {
+        selector.innerHTML = titleHTML;
+    }
+
+     let selector2 = document.getElementById('games');
+        if (selector2) {
+            selector2.innerHTML = gamesHTML;
         }
 
 })}
+
+function loadTeamsDropdown() {
+    let url = getAPIBaseURL() + '/teams';
+
+    fetch(url, {method: 'get'})
+    .then((response) => response.json())
+    .then(function(teams) {
+        let dropdownHTML = '';
+        teams.forEach(function(team){
+            dropdownHTML += '<li>' + team.name + '</li>';
+        })
+        document.getElementById('team1_list').innerHTML = dropdownHTML;
+        document.getElementById('team2_list').innerHTML = dropdownHTML;
+    })
+}
 
