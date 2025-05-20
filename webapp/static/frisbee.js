@@ -1,17 +1,24 @@
 
 window.addEventListener("load", initialize);
 
+let team1Selected = null; //For use in the team1 dropdown
+let team2Selected = null; //For use in the team2 dropdown
+
 function initialize() {
-    if (document.getElementById("teams_list")) {
+    if (document.getElementById("teams_list")) {//teams
         getTeams();
     }
-     if (document.getElementById("games")) {
+     if (document.getElementById("games")) { //teampage
         getGames();
         getTeamName();
         getRankHistory();
      }
-     if (document.getElementById("team1_list")) {
+     if (document.getElementById("team1_list")) { //MTIBTYT
         loadTeamsDropdown();
+        const btn = document.getElementById("chain_button");
+            if (btn) {
+                btn.addEventListener("click", onShowChainClicked);
+            }
      }
 }   
 
@@ -120,12 +127,52 @@ function loadTeamsDropdown() {
     fetch(url, {method: 'get'})
     .then((response) => response.json())
     .then(function(teams) {
-        let dropdownHTML = '';
+        let dropdownHTML1 = '';
+        let dropdownHTML2 = '';
         teams.forEach(function(team){
-            dropdownHTML += '<li>' + team.name + '</li>';
+            // use single quotes around the entire string, and wrap team.name in \"...\"
+            dropdownHTML1 += `<li onclick="selectTeam(1,'${team.name}')">${team.name}</li>`;
+            dropdownHTML2 += `<li onclick="selectTeam(2,'${team.name}')">${team.name}</li>`;
+
         })
-        document.getElementById('team1_list').innerHTML = dropdownHTML;
-        document.getElementById('team2_list').innerHTML = dropdownHTML;
+        document.getElementById('team1_list').innerHTML = dropdownHTML1;
+        document.getElementById('team2_list').innerHTML = dropdownHTML2;
     })
 }
 
+function selectTeam(slot, teamName) {
+    if (slot === 1) {
+        team1Selected = teamName;
+        document.getElementById('team1_header').innerHTML = teamName;
+    } else {
+        team2Selected = teamName;
+        document.getElementById('team2_header').innerHTML = teamName;
+    }
+}
+
+function getChain() {
+    let url = getAPIBaseURL() + '/MTIBTYT?teamOne=' + encodeURIComponent(team1Selected) + '&teamTwo=' + encodeURIComponent(team2Selected);
+
+    fetch(url, {method: 'get'})
+    .then((response) => response.json())
+    .then(function(result) {
+        let chainHTML = '';
+        result.forEach((name, i) => {
+        // use backticks so ${…} is evaluated
+        chainHTML += `<li>${name}${i < result.length - 1 ? " → " : ""}</li>\n`;
+        });
+        const ul = document.querySelector('#chain_output ul');
+        if (ul) {
+            ul.innerHTML = chainHTML;
+        }
+    })
+}
+
+function onShowChainClicked() {
+  // make sure both teams are picked
+  if (!team1Selected || !team2Selected) {
+    alert("Please select both Team 1 and Team 2 first.");
+    return;
+  }
+  getChain();
+}

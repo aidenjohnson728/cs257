@@ -17,7 +17,7 @@
         <div id="team1" class="leaderboard-box">
             <p>Select a team from the dropdown menu</p>
             <div class="dropdown">
-              <h3>Team 1</h3>
+              <h3 id="team1_header">Team 1</h3>
               <ul id="team1_list">
               </ul>
             </div>
@@ -27,7 +27,7 @@
         <div id="team2" class="leaderboard-box">
             <p>Select a team from the dropdown menu</p>
             <div class="dropdown">
-              <h3>Team 2</h3>
+              <h3 id="team2_header">Team 2</h3>
               <ul id="team2_list">
               </ul>
             </div>
@@ -35,17 +35,11 @@
 
         <!-- Chain of Pain -->
         <div id="chain">
-            <p>
-                (Upon opening this page, this box will be blank.) Once two teams are chosen, the chain of pain will be revealed.
-            </p>
+            <button id="chain_button">Show Chain of Pain</button>
+            <div id="chain_output">
             <ul>
-                <li>(Team One) &gt;</li>
-                <li>UNC Wilmington &gt;</li>
-                <li>Yale &gt;</li>
-                <li>Alabama-B &gt;</li>
-                <li>… &gt;</li>
-                <li>(Team Two)</li>
             </ul>
+            </div>
         </div>
 
     </div>

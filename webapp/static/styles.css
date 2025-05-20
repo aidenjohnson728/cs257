@@ -156,6 +156,21 @@ h2.MTIBTYT-title {
   gap: 1em;            
 }
 
+#chain_button {
+  display: block;
+  margin: 12px 0;
+  padding: 8px 16px;
+  background-color: #ccffcc;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+#chain_button:hover {
+  background-color: #b3e6b3;
+}
+
 /* Teams page layout */
 #teams-container {
   display: flex;
