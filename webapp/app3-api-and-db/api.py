@@ -6,7 +6,7 @@ from collections import deque  # For BFS in beat-chain
 import argparse           # For command-line args in __main__
 
 
-api = flask.Blueprint('api', __name__)
+app = flask.Flask(__name__)
 
 
 def get_connection():
@@ -22,7 +22,7 @@ def get_connection():
 
 
 # Endpoint: /leaderboard?algorithm=<SWCI|ELO|Massey>
-@api.route('/leaderboard')
+@app.route('/leaderboard')
 def leaderboard_endpoint():
     algo = flask.request.args.get('algorithm')
     if not algo:
@@ -66,7 +66,7 @@ def get_leaderboard(algorithm):
 
 
 # Endpoint: /MTIBTYT?teamOne=...&teamTwo=...
-@api.route('/MTIBTYT')
+@app.route('/MTIBTYT')
 def MTIBTYT_endpoint():
     teamOne = flask.request.args.get('teamOne')
     teamTwo = flask.request.args.get('teamTwo')
@@ -172,7 +172,7 @@ def team_exists(team_name):
 
 
 # Endpoint: /fun_facts
-@api.route('/fun_facts')
+@app.route('/fun_facts')
 def fun_facts_endpoint():
     fun_facts = get_fun_facts()
     return flask.jsonify(fun_facts)
@@ -208,7 +208,7 @@ def get_fun_facts():
 
 
 # Endpoint: /teams
-@api.route('/teams')
+@app.route('/teams')
 def teams_endpoint():
     teams = get_teams()
     return flask.jsonify(teams)
@@ -231,7 +231,7 @@ def get_teams():
 
 
 # Endpoint: /teampage?team=<name>&algorithm=<algo>
-@api.route('/teampage')
+@app.route('/teampage')
 def teampage_endpoint():
     team = flask.request.args.get('team')
     algorithm = flask.request.args.get('algorithm')
@@ -308,9 +308,6 @@ def get_ranking_records(team, algorithm):
     return ranking_records
 
 
-# Endpoint: /help, serves your help.html page
-
-
 if __name__ == '__main__':
     # Parse host and port from command line
     parser = argparse.ArgumentParser('An Ultimate Frisbee API')
@@ -318,4 +315,4 @@ if __name__ == '__main__':
     parser.add_argument('port', type=int, help='port for this app to listen on')
     arguments = parser.parse_args()
     # Start the Flask development server
-    api.run(host=arguments.host, port=arguments.port, debug=True)
+    app.run(host=arguments.host, port=arguments.port, debug=True)

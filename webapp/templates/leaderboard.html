@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Frisbee Stats</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
 <body>
   <div id="topbar">Frisbee Stats</div>
@@ -31,11 +31,11 @@
 
   <div id="navbar">
     <ul>
-      <li><a href="mockup1.html">Home</a></li>
-      <li><a href="mockup5.html">Teams</a></li>
-      <li><a href="mockup2.html">Leaderboard</a></li>
-      <li><a href="mockup3.html">MTIBTYT</a></li>
-      <li><a href="mockup4.html">Fun Facts</a></li>
+      <li><a href ="/"> Home</a></li>
+        <li><a href="teams.html"> Teams </a></li>
+        <li><a href="leaderboard.html"> Leaderboard </a></li>
+        <li><a href="MTIBTYT.html"> MTIBTYT </a></li>
+        <li><a href="fun_facts.html"> Fun Facts </a></li>
     </ul>
   </div>
 </body>

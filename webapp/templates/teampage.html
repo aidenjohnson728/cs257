@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+     <script type="text/javascript" src="{{ url_for('static', filename='frisbee.js') }}" ></script>
     <title>Frisbee Stats</title>
 </head>
 
@@ -15,12 +16,6 @@
 </div>
     <div id = "games">
         <h3> Games </h3>
-        <table>
-            <tr><th>Date</th><th>Opponent</th><th>Score (home-opponent)</th></tr>
-            <tr><th> 3-30 </th><th>Mississippi State</th><th>15-12</th></tr>
-            <tr><th>2-17</th><th>Lewis & Clark</th><th>4-15</th></tr>
-            <tr><th>2-09</th><th>South Florida-B</th><th>7-9</th></tr>
-            </table>
         </div>
 
     <div id = "rank">
@@ -39,11 +34,11 @@
     </div>
     <div id = "navbar"> 
         <ul>
-        <li><a href ="mockup1.html"> Home</a></li>
-        <li><a href="mockup5.html"> Teams </a></li>
-        <li><a href="mockup2.html"> Leaderboard </a></li>
-        <li><a href="mockup3.html"> MTIBTYT </a></li>
-        <li><a href="mockup4.html"> Fun Facts </a></li>
+        <li><a href ="/"> Home</a></li>
+        <li><a href="teams.html"> Teams </a></li>
+        <li><a href="leaderboard.html"> Leaderboard </a></li>
+        <li><a href="MTIBTYT.html"> MTIBTYT </a></li>
+        <li><a href="fun_facts.html"> Fun Facts </a></li>
             
         </ul>
     </div>
