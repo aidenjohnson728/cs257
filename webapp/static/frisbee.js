@@ -130,7 +130,6 @@ function loadTeamsDropdown() {
         let dropdownHTML1 = '';
         let dropdownHTML2 = '';
         teams.forEach(function(team){
-            // use single quotes around the entire string, and wrap team.name in \"...\"
             dropdownHTML1 += `<li onclick="selectTeam(1,'${team.name}')">${team.name}</li>`;
             dropdownHTML2 += `<li onclick="selectTeam(2,'${team.name}')">${team.name}</li>`;
 
@@ -158,8 +157,7 @@ function getChain() {
     .then(function(result) {
         let chainHTML = '';
         result.forEach((name, i) => {
-        // use backticks so ${…} is evaluated
-        chainHTML += `<li>${name}${i < result.length - 1 ? " → " : ""}</li>\n`;
+        chainHTML += `<li>${name}${i < result.length - 1 ? " > " : ""}</li>`;
         });
         const ul = document.querySelector('#chain_output ul');
         if (ul) {
