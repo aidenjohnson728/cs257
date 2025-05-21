@@ -1,10 +1,9 @@
 '''
     app.py
-    Jeff Ondich, 25 April 2016
-    Updated 8 November 2021
+    Alden Harcourt and Aiden Johnson
+    May 21st, 2025
 
-    A small Flask application that provides a barelywebsite with an accompanying
-    API (which is also tiny) to support that website.
+    Frisbee app that has many features.
 '''
 import flask
 import argparse
