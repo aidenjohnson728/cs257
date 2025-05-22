@@ -277,4 +277,14 @@ and repurposed our working box code, Source: https://www.w3schools.com/css/css3_
 h2.leaderboard-title {
   text-align: center;
 }
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 300px;        
+}
+
+#chart {
+  width: 100%;
+  height: 100%;
+}
 

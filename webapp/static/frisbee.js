@@ -8,20 +8,19 @@ function initialize() {
     if (document.getElementById("teams_list")) {//teams
         getTeams();
     }
-     if (document.getElementById("games")) { //teampage
+    if (document.getElementById("games")) { //teampage
         getGames();
-        getTeamName();
-        getRankHistory();
-     }
-     if (document.getElementById("team1_list")) { //MTIBTYT
+        populateLineChart();
+        //getRankHistory();
+    }
+    if (document.getElementById("team1_list")) { //MTIBTYT
         loadTeamsDropdown();
         const btn = document.getElementById("chain_button");
             if (btn) {
                 btn.addEventListener("click", onShowChainClicked);
             }
-     }
-}   
-
+    }
+}
 // Returns the base URL of the API, onto which endpoint
 // components can be appended.
 function getAPIBaseURL() {
@@ -118,8 +117,37 @@ function getGames() {
         if (selector2) {
             selector2.innerHTML = gamesHTML;
         }
-
 })}
+
+function populateLineChart() {
+  // 1) grab team from URL
+const params = new URLSearchParams(window.location.search);
+const team   = params.get('team');
+if (!team) return;
+
+  // 2) fetch both matches & rankings
+    let url = getAPIBaseURL() + '/teampage?team=' + encodeURIComponent(team) + '&algorithm=USAU';
+    fetch(url)
+        .then(res => res.json())
+        .then(result => {
+        const dates = result.rankings.map(r => r.date);
+        const ranks = result.rankings.map(r => r.rank);
+
+        const trace = {
+        x: dates,
+        y: ranks,
+        mode: 'lines+markers',
+        name: 'Rank History'
+        };
+
+        Plotly.newPlot('chart', [ trace ], {
+        title: 'Ranking History',
+        xaxis: { title: 'Date' },
+        yaxis: { title: 'Rank', autorange: 'reversed' } 
+        });
+    })
+    .catch(err => console.error(err));
+}
 
 function loadTeamsDropdown() {
     let url = getAPIBaseURL() + '/teams';
@@ -174,3 +202,4 @@ function onShowChainClicked() {
   }
   getChain();
 }
+
