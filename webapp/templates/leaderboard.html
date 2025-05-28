@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>Frisbee Stats</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+ <meta charset="utf-8" />
+ <title>Frisbee Stats</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+ <script type="text/javascript" src="{{ url_for('static', filename='frisbee.js') }}" ></script>
+ <script>
+   document.addEventListener('DOMContentLoaded', function () {
+     getLeaderboard(); //should default to USAU
+   });
+ </script>
 </head>
 <body>
-  <div id="topbar">Frisbee Stats</div>
-  <h2 class="leaderboard-title">Leaderboard</h2>
+ <div id="topbar">Frisbee Stats</div>
+ <h2 class="leaderboard-title">Leaderboard</h2>
 
-  <div id="leaderboard-container">
-    <div class="leaderboard-box">
-      <table>
-        <tr><th>Rank</th><th>Team</th></tr>
-        <tr><td>1</td><td>CUT</td></tr>
-        <tr><td>2</td><td>CHOP</td></tr>
-        <tr><td>3</td><td>Karls</td></tr>
-      </table>
-    </div>
 
-    <div id="leaderboard-dropdown" class="dropdown">
-      <p>Choose a ranking algorithm (default=Massey):</p>
-      <ul>
-        <li>Massey</li>
-        <li>ELO</li>
-        <li>SWCI</li>
-      </ul>
-    </div>
-  </div>
+ <div id="leaderboard-container">
+   <div class="leaderboard-box">
+     <div id="leaderboard"></div>
+   </div>
 
-  <div id="navbar">
-    <ul>
-      <li><a href ="/"> Home</a></li>
-        <li><a href="teams.html"> Teams </a></li>
-        <li><a href="leaderboard.html"> Leaderboard </a></li>
-        <li><a href="MTIBTYT.html"> MTIBTYT </a></li>
-        <li><a href="fun_facts.html"> Fun Facts </a></li>
-    </ul>
-  </div>
+
+   <div id="leaderboard-dropdown" class="dropdown">
+     <p>Choose a ranking algorithm (default=Massey):</p>
+     <ul>
+      <li onclick="getLeaderboard('USAU')">USAU</li>
+       <li onclick="getLeaderboard('Massey')">Massey</li>
+       <li onclick="getLeaderboard('ELO')">ELO</li>
+       <li onclick="getLeaderboard('SWCI')">SWCI</li>
+     </ul>
+   </div>
+ </div>
+
+
+ <div id="navbar">
+   <ul>
+     <li><a href ="/"> Home</a></li>
+       <li><a href="teams.html"> Teams </a></li>
+       <li><a href="leaderboard.html"> Leaderboard </a></li>
+       <li><a href="MTIBTYT.html"> MTIBTYT </a></li>
+       <li><a href="fun_facts.html"> Fun Facts </a></li>
+   </ul>
+ </div>
 </body>
 </html>
+
+
+

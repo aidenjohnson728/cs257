@@ -8,41 +8,35 @@
 
 <body>
     <div id="topbar">Frisbee Stats</div>
-    <h2>
-        How to use Frisbee Stats: </h2>
-    <h3>
-        Teams Page:
-    </h3>
-    <p>
-       Click on the Teams Page to view an alphabetical list of all D1 and D3 mens ultimate teams from the 24-25 season. 
-       Once on the Team Page, select any team to view their stats.
-    </p>
-    <h3>
-        Leaderboard:
-    </h3>
-    <p>
-        Click on the Leaderboard page to view the rankings of all Mens ultimate teams 24-25. Select your choice of ranking algorithm to view different rankings.
-    </p>
-    <h3>
-        My Team is Better than Your Team (MTIBTYT):
-    </h3>
-    <p>
-        Once on this page, select any two Mens teams from the drop down menus. If there is a sequence of teams for which team 1 beat team x who beat team y ... who beat team 2, this sequence will be outputted. 
-    </p>
-    <h3>
-        Fun Facts:
-    </h3>
-    <p>
-        View a few fun facts from the season!  
-    </p>
-<div id = "navbar"> 
-    <ul>
-        <li><a href ="/"> Home</a></li>
-        <li><a href="teams.html"> Teams </a></li>
-        <li><a href="leaderboard.html"> Leaderboard </a></li>
-        <li><a href="MTIBTYT.html"> MTIBTYT </a></li>
-        <li><a href="fun_facts.html"> Fun Facts </a></li>
-    </ul>
-</div>
+    <div id="home-flex">
+        <div id="home-main">
+            <h2>How to use Frisbee Stats: </h2>
+            <p>*This site only has data up until 3/30/2025 for the D1 and D3 mens divisions</p>
+            <h3>Teams:</h3>
+            <p>View a list of all teams. Click on a team to view its page.</p>
+            <h3>Leaderboard:</h3>
+            <p>View the leaderboard according to different ranking algorithms.</p>
+            <h3>My Team is Better than Your Team (MTIBTYT):</h3>
+            <p>Prove that your team is better than your friends team!</p>
+            <h3>Fun Facts:</h3>
+            <p>View a few fun facts from the season!</p>
+            <h4>Congratulations to Carleton CUT for taking home their fifth D1 mens championship!!!</h4>
+            <h4>CUTRULES</h4>
+            <h4>Also congratulations to Lewis &amp Clark Bacchus for winning their first D3 mens championship!</h4>
+        </div>
+        <div id="home-image">
+            <img src="{{ url_for('static', filename='CUTlogo.png') }}" alt="CUT logo" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+
+    <div id="navbar">
+        <ul>
+            <li><a href ="/"> Home</a></li>
+            <li><a href="teams.html"> Teams </a></li>
+            <li><a href="leaderboard.html"> Leaderboard </a></li>
+            <li><a href="MTIBTYT.html"> MTIBTYT </a></li>
+            <li><a href="fun_facts.html"> Fun Facts </a></li>
+        </ul>
+    </div>
 </body>
 </html>
