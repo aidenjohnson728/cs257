@@ -136,6 +136,8 @@ function populateLineChart(algorithm = 'USAU') {
             const dates = result.rankings.map(r => r.date);
             const ranks = result.rankings.map(r => r.rank);
 
+            document.getElementById('rank-header').innerHTML = `Rank: ${result.rankings[0].rank}`;
+
             const trace = {
                 x: dates,
                 y: ranks,
