@@ -1,0 +1,30 @@
+User Testing Observations
+
+Aiden Johnson, Alden Harcourt
+
+30 May 2025
+
+Things the testers found easy
+- Navigating seamlessly through the pages was not challenge. As in, going from one place to the other was never tricky.
+- Navigating each page had simple and intuitive instructions that everyone was able to do successfully.
+- Reading the data presented was never a challenge for anyone after general explanation.
+
+Things people had trouble with
+- Every person lacked a concrete understanding of what our algorithms did. Explanation is necessary.
+- The home page was a bit confusing for many testers. 
+- Some users needed follow up explanation on what a page was doing at first. 
+- Drop down menus were unclear sometimes, users could not correctly click on them sometimes. 
+
+Other positive comments or observations
+- All of the functionality of our code worked exactly as we wanted. Now the only thing is finetuning 
+our web application's UI. 
+- People really liked the layout of our web app.
+- My Team Is Better Than Your Team was a function everyone enjoyed playing around with. 
+- People thought our app was cool! 
+
+Other suggestions for improvement
+- We should add a search bar to the teams page. 
+- Working on the drop down menu for our MTIBTYT page. We need to connect the drop down menu to the search. 
+- We want this team list and leaderboard to look coherent and as part of the same whole.
+- User Interphase tweaks as mentioned above. 
+
