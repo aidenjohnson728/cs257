@@ -1,9 +1,16 @@
-import psycopg2           # PostgreSQL driver
-import flask              # Flask web framework
-import sys                # For stderr printing
-import config             # Your DB credentials
-from collections import deque  # For BFS in beat-chain
-import argparse           # For command-line args in __main__
+"""
+api.py
+
+Defines the API endpoints for the Frisbee Stats web app.
+Handles database queries and returns JSON responses.
+"""
+
+import psycopg2           
+import flask              
+import sys               
+import config            
+from collections import deque 
+import argparse           
 
 
 api = flask.Blueprint('api', __name__)
@@ -24,6 +31,7 @@ def get_connection():
 # Endpoint: /leaderboard?algorithm=<SWCI|ELO|Massey>
 @api.route('/leaderboard')
 def leaderboard_endpoint():
+    """API endpoint: Return leaderboard for a given algorithm."""
     algo = flask.request.args.get('algorithm')
     if not algo:
         algo = 'USAU'   # default algorithm
@@ -68,6 +76,7 @@ def get_leaderboard(algorithm):
 # Endpoint: /MTIBTYT?teamOne=...&teamTwo=...
 @api.route('/MTIBTYT')
 def MTIBTYT_endpoint():
+    """API endpoint: Return a beat-chain from teamOne to teamTwo."""
     teamOne = flask.request.args.get('teamOne')
     teamTwo = flask.request.args.get('teamTwo')
     # validate parameters
@@ -119,7 +128,6 @@ def get_MTIBTYT(teamOne, teamTwo):
         visited = {start_id}
         prev = {}  # track path
 
-        # Standard BFS to find goal_id
         while queue:
             curr = queue.popleft()
             if curr == goal_id:
@@ -174,6 +182,7 @@ def team_exists(team_name):
 # Endpoint: /fun_facts
 @api.route('/fun_facts')
 def fun_facts_endpoint():
+    """API endpoint: Return fun facts for teams."""
     fun_facts = get_fun_facts()
     return flask.jsonify(fun_facts)
 
@@ -210,6 +219,7 @@ def get_fun_facts():
 # Endpoint: /teams
 @api.route('/teams')
 def teams_endpoint():
+    """API endpoint: Return all team names."""
     teams = get_teams()
     return flask.jsonify(teams)
 
@@ -233,6 +243,7 @@ def get_teams():
 # Endpoint: /teampage?team=<name>&algorithm=<algo>
 @api.route('/teampage')
 def teampage_endpoint():
+    """API endpoint: Return matches and rankings for a team."""
     team = flask.request.args.get('team')
     algorithm = flask.request.args.get('algorithm')
     if not team:

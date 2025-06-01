@@ -1,3 +1,6 @@
+// frisbee.js
+// Javascript for Frisbee Stats web app: handles API calls, DOM updates, and UI logic.
+
 window.addEventListener("load", initialize);
 
 
@@ -7,6 +10,7 @@ let allTeams = []; // Store all teams for searching
 
 
 function initialize() {
+   // Initialize page-specific logic based on present elements.
    if (document.getElementById("teams_list")) {//teams
        getTeams();
    }
@@ -23,8 +27,7 @@ function initialize() {
            }
    }
 }
-// Returns the base URL of the API, onto which endpoint
-// components can be appended.
+// Returns the base URL of the API, onto which endpoint components can be appended.
 function getAPIBaseURL() {
    let baseURL = window.location.protocol
                    + '//' + window.location.hostname
@@ -35,6 +38,7 @@ function getAPIBaseURL() {
 
 
 function getTeams() {
+   // Fetch and display all teams on the teams page.
    let url = getAPIBaseURL() + '/teams';
 
 
@@ -73,8 +77,7 @@ function getTeams() {
 
 
 function getGames() {
-
-
+   // Fetch and display all games for a team on the team page.
    let params = new URLSearchParams(window.location.search);
    let team = params.get('team');
    if (!team) {
@@ -125,6 +128,7 @@ function getGames() {
 
 
 function populateLineChart(algorithm = 'USAU') {
+    // Fetch and plot ranking history for a team.
     const params = new URLSearchParams(window.location.search);
     const team = params.get('team');
     if (!team) return;
@@ -156,6 +160,7 @@ function populateLineChart(algorithm = 'USAU') {
 
 
 function loadTeamsDropdown() {
+    // Load all teams into dropdowns for MTIBTYT page.
     let url = getAPIBaseURL() + '/teams';
 
 
@@ -184,6 +189,7 @@ function loadTeamsDropdown() {
 }
 
 function renderTeamList(slot, teams) {
+    // Render the team list for a dropdown.
     let html = '';
     teams.forEach(function(team){
         html += `<li onclick="selectTeam(${slot},'${team.name}')">${team.name}</li>`;
@@ -196,12 +202,14 @@ function renderTeamList(slot, teams) {
 }
 
 function filterTeams(slot, query) {
+    // Filter teams in dropdown by search query.
     query = query.trim().toLowerCase();
     let filtered = allTeams.filter(team => team.name.toLowerCase().includes(query));
     renderTeamList(slot, filtered);
 }
 
 function selectTeam(slot, teamName) {
+   // Set selected team for MTIBTYT comparison.
    if (slot === 1) {
        team1Selected = teamName;
        document.getElementById('team1_header').innerHTML = teamName;
@@ -213,6 +221,7 @@ function selectTeam(slot, teamName) {
 
 
 function getChain() {
+   // Fetch and display the beat-chain between two teams.
    let url = getAPIBaseURL() + '/MTIBTYT?teamOne=' + encodeURIComponent(team1Selected) + '&teamTwo=' + encodeURIComponent(team2Selected);
 
    fetch(url, {method: 'get'})
@@ -234,6 +243,7 @@ function getChain() {
 
 
 function onShowChainClicked() {
+ // Handle click for showing the chain of pain.
  // make sure both teams are picked
  if (!team1Selected || !team2Selected) {
    alert("Please select both Team 1 and Team 2 first.");
@@ -244,6 +254,7 @@ function onShowChainClicked() {
 
 
 function getLeaderboard(algorithm = 'USAU') {
+   // Fetch and display leaderboard for a given algorithm.
    //Endpoint: /leaderboard?algorithm=<SWCI|ELO|Massey>
 
 

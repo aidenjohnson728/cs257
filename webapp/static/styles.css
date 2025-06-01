@@ -1,4 +1,11 @@
-/* For lefthand navbar */
+/*
+  styles.css
+  Main stylesheet for Frisbee Stats web app.
+  Handles layout, navigation, and component appearance.
+*/
+
+/* --- Navbar and Topbar --- */
+/* Fixed sidebar for navigation and topbar for site title */
 nav,
 #navbar,
 div[id="nav bar"] {
@@ -62,7 +69,8 @@ body {
   background-color: #f0faf0; 
 }
 
-/* Base dropdown container */
+/* --- Dropdown Menus --- */
+/* Used for algorithm/team selectors, hidden until hover */
 .dropdown {
   position: relative;
   display: inline-block;       
@@ -100,7 +108,8 @@ body {
   background: #b3e6b3;
 }
 
-/* MTIBTYT flex-box layout */
+/* --- MTIBTYT Page Layout --- */
+/* Flexbox for team selectors and chain panel */
 .panel-container {
   margin-left: 140px;
   margin-top: 20px;
@@ -177,7 +186,8 @@ body {
   background-color: #b3e6b3;
 }
 
-/* Teams page layout */
+/* --- Teams Page Layout --- */
+/* Flexbox for games and ranking panels */
 #teams-container {
   display: flex;
   flex-wrap: wrap;
@@ -208,7 +218,7 @@ body {
   display: flex;
 }
 
-/* rank panel inner layout */
+/* --- Rank Panel --- */
 #rank {
   display: flex;           
   flex-direction: column;  
@@ -219,7 +229,7 @@ body {
   height: auto;
 }
 
-/* Leaderboard page layout */
+/* --- Leaderboard Page Layout --- */
 #leaderboard-container {
   display: flex;
   align-items: flex-start;
@@ -228,14 +238,8 @@ body {
   margin-top: 0;              
 }
 
-
-/* I wanted to round the boxes for a sleeker design, so I looked up how to do it, and then
-repurposed the code we already had to make round boxes. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius */
-
-/* Additionally, I wanted to make a box shadow to make the boxes pop out more. So I also found a source to do that 
-and repurposed our working box code, Source: https://www.w3schools.com/css/css3_shadows_box.asp */
-
-
+/* --- Box and Table Styling --- */
+/* Rounded corners, shadows, and table formatting */
 .leaderboard-box {
   width: 65%;                
   max-width: 500px;           
@@ -261,6 +265,7 @@ and repurposed our working box code, Source: https://www.w3schools.com/css/css3_
   font-weight: bold;
 }
 
+/* --- Leaderboard Dropdown --- */
 #leaderboard-dropdown {
   display: flex;
   width: 35%;
@@ -297,12 +302,7 @@ and repurposed our working box code, Source: https://www.w3schools.com/css/css3_
   background: #b3e6b3;
 }
 
-h2.leaderboard-title,
-h2.MTIBTYT-title {
-  text-align: left;
-  margin-left: 0;
-}
-
+/* --- Chart Container --- */
 .chart-container {
   width: 100%;
   max-width: 800px;  
@@ -315,7 +315,7 @@ h2.MTIBTYT-title {
   height: 100%;
 }
 
-/* Left-justify all text and containers */
+/* --- General Alignment and Spacing --- */
 body,
 #teams-container,
 #navbar,
@@ -331,7 +331,6 @@ p,
   text-align: left;
 }
 
-/* Consistent padding for all major boxes */
 .leaderboard-box,
 #rank,
 #games,
@@ -375,6 +374,8 @@ ul {
   align-self: flex-start;
 }
 
+/* --- Home Page Layout --- */
+/* Flexbox for instructions and image */
 #home-flex {
   display: flex;
   flex-direction: row;
