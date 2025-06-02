@@ -13,7 +13,10 @@
       Provides navigation and usage instructions.
     -->
 
-    <div id="topbar">Frisbee Stats</div>
+    <div id="topbar">
+        Frisbee Stats
+        <img src="{{ url_for('static', filename='Frisbee_Stats_Logo_Light.png') }}" alt="Logo" class="topbar-logo">
+      </div>
     <div id="home-flex">
         <div id="home-main">
             <h2>How to use Frisbee Stats: </h2>
@@ -37,12 +40,37 @@
 
     <div id="navbar">
         <ul>
-            <li><a href ="/"> Home</a></li>
-            <li><a href="teams.html"> Teams </a></li>
-            <li><a href="leaderboard.html"> Leaderboard </a></li>
-            <li><a href="MTIBTYT.html"> MTIBTYT </a></li>
-            <li><a href="fun_facts.html"> Fun Facts </a></li>
+            <li>
+                <a href="/" class="nav-item">
+                  <img src="{{ url_for('static', filename='Home_Dark.png') }}" alt="Home" class="nav-icon">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="teams.html" class="nav-item">
+                  <img src="{{ url_for('static', filename='Teams_Dark.png') }}" alt="Teams" class="nav-icon">
+                  Teams
+                </a>
+              </li>  
+              <li>
+                <a href="leaderboard.html" class="nav-item">
+                  <img src="{{ url_for('static', filename='Leaderboard_Dark.png') }}" alt="Leaderboard" class="nav-icon">
+                  Leaderboard
+                </a>
+              </li>
+              <li>
+                <a href="MTIBTYT.html" class="nav-item">
+                  <img src="{{ url_for('static', filename='MTIBTYT_Dark.png') }}" alt="MTIBTYT" class="nav-icon">
+                  MTIBTYT
+                </a>
+              </li>  
+              <li>
+                <a href="fun_facts.html" class="nav-item">
+                  <img src="{{ url_for('static', filename='Fun_Facts_Dark.png') }}" alt="Fun Facts" class="nav-icon">
+                  Fun Facts
+                </a>
+              </li>               
         </ul>
-    </div>
+      </div>
 </body>
 </html>
