@@ -75,6 +75,8 @@ body {
   position: relative;
   display: inline-block;       
   cursor: pointer;
+  background: #ccffcc;         
+  padding: 6px 12px;
   border-radius: 4px;
   user-select: none;
   align-self: flex-start;
@@ -282,7 +284,7 @@ body {
   top: 100%;
   left: 0;
   display: none;
-  background: #FFFFFF;
+  background: #ccffcc;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -313,7 +315,7 @@ body {
   height: 100%;
 }
 
-
+/* --- General Alignment and Spacing --- */
 body,
 #teams-container,
 #navbar,
@@ -417,7 +419,7 @@ ul {
   width: 100%;
   max-height: 200px;
   overflow-y: auto;
-  background: #FFFFFF;
+  background: #ccffcc;
   border: 1px solid #ccc;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
@@ -456,7 +458,7 @@ ul {
   position: absolute;
   left: 0;
   top: 100%;
-  background: #FFFFFF;
+  background: #ccffcc;
   border: 1px solid #aaa;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
