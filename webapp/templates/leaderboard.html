@@ -27,9 +27,9 @@
    </div>
 
 
-   <div id="leaderboard-dropdown" class="dropdown">
-     <p>Choose a ranking algorithm (default=Massey):</p>
-     <ul>
+   <div id="leaderboard-dropdown" class="dropdown" style="position:relative;">
+     <button id="algorithm-button">Choose a ranking algorithm ▼</button>
+     <ul id="algorithm-dropdown" style="display:none;">
       <li onclick="getLeaderboard('USAU')">USAU</li>
        <li onclick="getLeaderboard('Massey')">Massey</li>
        <li onclick="getLeaderboard('ELO')">ELO</li>
@@ -48,6 +48,25 @@
        <li><a href="fun_facts.html"> Fun Facts </a></li>
    </ul>
  </div>
+
+ <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var button = document.getElementById('algorithm-button');
+  var dropdown = document.getElementById('algorithm-dropdown');
+  if (button && dropdown) {
+    button.onclick = function(event) {
+      event.stopPropagation();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    };
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
 

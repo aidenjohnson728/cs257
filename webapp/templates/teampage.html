@@ -20,13 +20,14 @@
     <div id = "rank">
         <h3 id="rank-header"></h3>
         <p>Choose your desired algorithm:</p>
-        <div class = "dropdown">
-            <ul id="algorithm-dropdown">
-                <li> USAU </li>
-                <li> Massey </li>
-                <li> ELO </li>
-                <li> SWCI </li>
-            </ul>
+        <div class="dropdown" id="algorithm-dropdown-container">
+          <button id="algorithm-button">Choose a ranking algorithm ▼</button>
+          <ul id="algorithm-dropdown" style="display:none;">
+            <li>USAU</li>
+            <li>Massey</li>
+            <li>ELO</li>
+            <li>SWCI</li>
+          </ul>
         </div>   
         <div class="chart-container" id="chart-container">
                 <div id="chart"></div>
@@ -43,5 +44,22 @@
             
         </ul>
     </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var button = document.getElementById('algorithm-button');
+  var dropdown = document.getElementById('algorithm-dropdown');
+  if (button && dropdown) {
+    button.onclick = function() {
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    };
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
