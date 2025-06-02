@@ -438,7 +438,7 @@ ul {
 
 /* Show dropdown when parent has .open class */
 .team-search-dropdown.open .team-list-dropdown {
-  display: block;
+  display: block !important;
 }
 
 /* --- Algorithm Dropdown Styling --- */
