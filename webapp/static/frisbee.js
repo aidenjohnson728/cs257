@@ -185,6 +185,10 @@ function loadTeamsDropdown() {
                filterTeams(2, search2.value);
            });
        }
+
+       // Setup dropdown show/hide
+       setupTeamSearchDropdown(1);
+       setupTeamSearchDropdown(2);
    })
 }
 
@@ -303,6 +307,34 @@ document.addEventListener("DOMContentLoaded", function() {
         populateLineChart('USAU');
     }
 });
+
+function setupTeamSearchDropdown(slot) {
+    const container = document.querySelector(slot === 1 ? '.team-search-dropdown input#team1_search' : '.team-search-dropdown input#team2_search').parentElement;
+    const input = container.querySelector('input');
+    const list = container.querySelector('ul');
+
+    // Show dropdown on focus or input
+    input.addEventListener('focus', () => {
+        container.classList.add('open');
+    });
+    input.addEventListener('input', () => {
+        container.classList.add('open');
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('mousedown', function handler(e) {
+        if (!container.contains(e.target)) {
+            container.classList.remove('open');
+        }
+    });
+
+    // Hide dropdown after selection
+    list.addEventListener('mousedown', function(e) {
+        if (e.target.tagName === 'LI') {
+            setTimeout(() => container.classList.remove('open'), 100);
+        }
+    });
+}
 
 
 

@@ -405,5 +405,43 @@ ul {
   display: block;
 }
 
+/* --- Team Search Dropdown --- */
+.team-search-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.team-list-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #ccffcc;
+  border: 1px solid #ccc;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 20;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-list-dropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.team-list-dropdown li:hover {
+  background: #b3e6b3;
+}
+
+/* Show dropdown when parent has .open class */
+.team-search-dropdown.open .team-list-dropdown {
+  display: block;
+}
+
 
 
