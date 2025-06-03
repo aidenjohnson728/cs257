@@ -47,7 +47,7 @@
                 </a>
               </li>
               <li>
-                <a href="teams.html" class="nav-item">
+                <a href="teams.html" class="nav-item active">
                   <img src="{{ url_for('static', filename='Teams_Dark.png') }}" alt="Teams" class="nav-icon"
                   image-dark="{{ url_for('static', filename='Teams_Dark.png') }}"
                   image-light="{{ url_for('static', filename='Teams_Light.png') }}">
@@ -81,7 +81,6 @@
         </ul>
       </div>
  
-
 <script>
   document.querySelectorAll('.nav-icon').forEach(function(icon){
     var link = icon.parentElement;
@@ -96,14 +95,20 @@
     });
     // On leave use dark unless this is the current page
     link.addEventListener('mouseleave', function() {
-      if (window.location.pathname === href) {
+      if (
+        (window.location.pathname === href) ||
+        (window.location.pathname.startsWith('/teampage') && href === '/teams.html')
+      ) {
         icon.src = icon.getAttribute('image-light');
       } else {
         icon.src = icon.getAttribute('image-dark');
       }
     });
     // On page load set to light if this is current page
-    if (window.location.pathname === href) {
+    if (
+      (window.location.pathname === href) ||
+      (window.location.pathname.startsWith('/teampage') && href === '/teams.html')
+    ) {
       icon.src = icon.getAttribute('image-light');
     } else {
       icon.src = icon.getAttribute('image-dark');
