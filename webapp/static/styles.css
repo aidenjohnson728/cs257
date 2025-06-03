@@ -503,8 +503,8 @@ ul {
  
  
  .nav-icon {
-  width: 83px;
-  height: 83px;
+  width: 70px;
+  height: 70px;
   margin-bottom: 6px;
  }
  
@@ -512,7 +512,7 @@ ul {
  .topbar-logo {
   height: 65px;
   width: 120px;
-  margin-left: 1200px;
+  margin-left: 0px;
  }
  
 

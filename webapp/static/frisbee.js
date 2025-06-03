@@ -329,11 +329,11 @@ function setupTeamSearchDropdown(slot) {
     });
 
     // Hide dropdown after selection
-    list.addEventListener('mousedown', function(e) {
-        if (e.target.tagName === 'LI') {
-            setTimeout(() => container.classList.remove('open'), 100);
-        }
-    });
+    list.addEventListener('click', function(e) {
+    if (e.target.tagName === 'LI') {
+        container.classList.remove('open');
+    }
+});
 }
 
 

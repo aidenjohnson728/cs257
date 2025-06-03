@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <div id="topbar">Frisbee Stats</div>
+    <div id="topbar">
+        <img src="{{ url_for('static', filename='Frisbee_Stats_Logo_Light.png') }}" alt="Logo" class="topbar-logo">
+      </div>
 
 <div id="teams-container">
 <h2 id="page-title"></h2>
@@ -34,16 +36,80 @@
         </div>    
     </div>
     </div>
-    <div id = "navbar"> 
+    <div id="navbar">
         <ul>
-        <li><a href ="/"> Home</a></li>
-        <li><a href="teams.html"> Teams </a></li>
-        <li><a href="leaderboard.html"> Leaderboard </a></li>
-        <li><a href="MTIBTYT.html"> MTIBTYT </a></li>
-        <li><a href="fun_facts.html"> Fun Facts </a></li>
-            
+            <li>
+                <a href="/" class="nav-item">
+                  <img src="{{ url_for('static', filename='Home_Dark.png') }}" alt="Home" class="nav-icon"
+                  image-dark="{{ url_for('static', filename='Home_Dark.png') }}"
+                  image-light="{{ url_for('static', filename='Home_Light.png') }}">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="teams.html" class="nav-item">
+                  <img src="{{ url_for('static', filename='Teams_Dark.png') }}" alt="Teams" class="nav-icon"
+                  image-dark="{{ url_for('static', filename='Teams_Dark.png') }}"
+                  image-light="{{ url_for('static', filename='Teams_Light.png') }}">
+                  Teams
+                </a>
+              </li>  
+              <li>
+                <a href="leaderboard.html" class="nav-item">
+                  <img src="{{ url_for('static', filename='Leaderboard_Dark.png') }}" alt="Leaderboard" class="nav-icon"
+                  image-dark="{{ url_for('static', filename='Leaderboard_Dark.png') }}"
+                  image-light="{{ url_for('static', filename='Leaderboard_Light.png') }}">
+                  Leaderboard
+                </a>
+              </li>
+              <li>
+                <a href="MTIBTYT.html" class="nav-item">
+                  <img src="{{ url_for('static', filename='MTIBTYT_Dark.png') }}" alt="MTIBTYT" class="nav-icon"
+                  image-dark="{{ url_for('static', filename='MTIBTYT_Dark.png') }}"
+                  image-light="{{ url_for('static', filename='MTIBTYT_Light.png') }}">
+                  MTIBTYT
+                </a>
+              </li>  
+              <li>
+                <a href="fun_facts.html" class="nav-item">
+                  <img src="{{ url_for('static', filename='Fun_Facts_Dark.png') }}" alt="Fun Facts" class="nav-icon"
+                  image-dark="{{ url_for('static', filename='Fun_Facts_Dark.png') }}"
+                  image-light="{{ url_for('static', filename='Fun_Facts_Light.png') }}">
+                  Fun Facts
+                </a>
+              </li>               
         </ul>
-    </div>
+      </div>
+ 
+
+<script>
+  document.querySelectorAll('.nav-icon').forEach(function(icon){
+    var link = icon.parentElement;
+    var href = link.getAttribute('href');
+    // Add leading slash if missing
+    if (href && !href.startsWith('/')) {
+      href = '/' + href;
+    }
+    // On hover, use light
+    link.addEventListener('mouseenter', function() {
+      icon.src = icon.getAttribute('image-light');
+    });
+    // On leave use dark unless this is the current page
+    link.addEventListener('mouseleave', function() {
+      if (window.location.pathname === href) {
+        icon.src = icon.getAttribute('image-light');
+      } else {
+        icon.src = icon.getAttribute('image-dark');
+      }
+    });
+    // On page load set to light if this is current page
+    if (window.location.pathname === href) {
+      icon.src = icon.getAttribute('image-light');
+    } else {
+      icon.src = icon.getAttribute('image-dark');
+    }
+  });
+</script>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
   var button = document.getElementById('algorithm-button');
