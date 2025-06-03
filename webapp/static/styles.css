@@ -299,6 +299,9 @@ and repurposed our working box code, Source: https://www.w3schools.com/css/css3_
   border-radius: 4px;
   z-index: 10;
 }
+#leaderboard-dropdown.open ul {
+  display: block !important;
+}
 #leaderboard-dropdown:hover ul {
   display: block;
 }
@@ -486,6 +489,11 @@ ul {
   background: #b3e6b3;
 }
 
+#navbar .nav-item:hover,
+#navbar .nav-item.active {
+  background-color: #77A479;
+}
+
 .nav-item {
   display: flex;
   flex-direction: column;
@@ -497,7 +505,8 @@ ul {
  }
  
  
- .nav-item:hover {
+ .nav-item:hover,
+ .nav-item.active {
   background-color: #77A479;
  }
  
@@ -514,5 +523,5 @@ ul {
   width: 120px;
   margin-left: 0px;
  }
- 
+
 

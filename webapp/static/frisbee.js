@@ -229,7 +229,15 @@ function getChain() {
    let url = getAPIBaseURL() + '/MTIBTYT?teamOne=' + encodeURIComponent(team1Selected) + '&teamTwo=' + encodeURIComponent(team2Selected);
 
    fetch(url, {method: 'get'})
-   .then((response) => response.json())
+   .then((response) => {
+       const ul = document.querySelector('#chain_output ul');
+       if (!response.ok) {
+           // If 404 or other error, show the sorry message
+           if (ul) ul.innerHTML = '<li>Sorry, but your team is not better than my team</li>';
+           return null;
+       }
+       return response.json();
+   })
    .then(function(result) {
        let chainHTML = '';
        for (let i = 0; i < result.length; i++) {
@@ -295,6 +303,7 @@ function getLeaderboard(algorithm = 'USAU') {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    // Existing code for algorithm dropdown in teampage
     const algoDropdown = document.getElementById('algorithm-dropdown');
     if (algoDropdown) {
         algoDropdown.querySelectorAll('li').forEach(function(li) {
@@ -305,6 +314,28 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         // Optionally, show default chart
         populateLineChart('USAU');
+    }
+
+    // --- Leaderboard dropdown click-to-open logic ---
+    const leaderboardDropdown = document.getElementById('leaderboard-dropdown');
+    const leaderboardButton = document.getElementById('algorithm-button');
+    if (leaderboardDropdown && leaderboardButton) {
+        leaderboardButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            leaderboardDropdown.classList.toggle('open');
+        });
+        // Close dropdown when clicking outside
+        document.addEventListener('mousedown', function(e) {
+            if (!leaderboardDropdown.contains(e.target)) {
+                leaderboardDropdown.classList.remove('open');
+            }
+        });
+        // Optional: close dropdown when selecting an item
+        leaderboardDropdown.querySelectorAll('li').forEach(function(li) {
+            li.addEventListener('click', function() {
+                leaderboardDropdown.classList.remove('open');
+            });
+        });
     }
 });
 
