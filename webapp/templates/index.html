@@ -4,39 +4,57 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
     <title>Frisbee Stats</title>
+
+    <!-- CSS and HTML for background video repurposed from https://www.w3schools.com/howto/howto_css_fullscreen_video.asp -->>
+    <style>
+      /* Simple background video styling */
+      .bg-video {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        object-fit: cover;
+        z-index: -2;
+      }
+      .bg-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.45);
+        z-index: -1;
+      }
+      .center-title {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 2.5em;
+        font-weight: bold;
+        text-shadow: 0 2px 8px #222;
+        z-index: 10;
+        text-align: center;
+        letter-spacing: 2px;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+    </style>
 </head>
 
 <body>
-    <!--
-      index.html
-      Home page for Frisbee Stats web app.
-      Provides navigation and usage instructions.
-    -->
+    <!-- Background video -->
+    <video class="bg-video" autoplay loop muted playsinline>
+      <source src="{{ url_for('static', filename='CUT_Highlights.mp4') }}" type="video/mp4">
+    </video>
+    <div class="bg-overlay"></div>
+    <div class="center-title">Welcome to Frisbee Stats!</div>
 
     <div id="topbar">
         <img src="{{ url_for('static', filename='Frisbee_Stats_Logo_Light.png') }}" alt="Logo" class="topbar-logo">
       </div>
     <div id="home-flex">
-        <div id="home-main">
-            <h2>How to use Frisbee Stats: </h2>
-            <p>*This site only has data up until 3/30/2025 for the D1 and D3 mens divisions</p>
-            <h3>Teams:</h3>
-            <p>View a list of all teams. Click on a team to view its page.</p>
-            <h3>Leaderboard:</h3>
-            <p>View the leaderboard according to different ranking algorithms.</p>
-            <h3>My Team is Better than Your Team (MTIBTYT):</h3>
-            <p>Prove that your team is better than your friends team!</p>
-            <h3>Fun Facts:</h3>
-            <p>View a few fun facts from the season!</p>
-            <h4>Congratulations to Carleton CUT for taking home their fifth D1 mens championship!!!</h4>
-            <h4>CUTRULES</h4>
-            <h4>Also congratulations to Lewis &amp Clark Bacchus for winning their first D3 mens championship!</h4>
-        </div>
-        <div id="home-image">
-            <img src="{{ url_for('static', filename='CUTlogo.png') }}" alt="CUT logo" style="max-width: 100%; height: auto;">
-        </div>
-    </div>
-
     <div id="navbar">
         <ul>
             <li>
