@@ -504,4 +504,10 @@ ul {
   margin-left: 0px;
  }
 
+#teams_search {
+  width: 150px;    /* Set your desired width */
+  margin-bottom: 12px;
+  padding: 6px 10px;
+}
+
 

@@ -7,12 +7,13 @@ window.addEventListener("load", initialize);
 let team1Selected = null; //For use in the team1 dropdown
 let team2Selected = null; //For use in the team2 dropdown
 let allTeams = []; // Store all teams for searching
-
+let allTeamsForTeamsPage = []; // Store all teams for teams.html search
 
 function initialize() {
    // Initialize page-specific logic based on present elements.
    if (document.getElementById("teams_list")) {//teams
        getTeams();
+       setupTeamsSearch();
    }
    if (document.getElementById("games")) { //teampage
        getGames();
@@ -40,39 +41,42 @@ function getAPIBaseURL() {
 function getTeams() {
    // Fetch and display all teams on the teams page.
    let url = getAPIBaseURL() + '/teams';
-
-
-   // Send the request to the books API /authors/ endpoint
    fetch(url, {method: 'get'})
-
    .then((response) => response.json())
-
-
    .then(function(result) {
-       let teamsHTML = '';
-       for (let k = 0; k < result.length; k++) {
-           teamsHTML += `<li>
-                           <a href="/teampage.html?team=${encodeURIComponent(result[k].name)}">
-                           ${result[k].name}
-                           </a>
-                       </li>`;
-
-
-       }
-
-
-
-
-       let selector = document.getElementById('teams_list');
-       if (selector) {
-           selector.innerHTML = teamsHTML;
-       }
+       allTeamsForTeamsPage = result; // Save for search filtering
+       renderTeamsList(result);
    })
-
-
    .catch(function(error) {
        console.log(error);
    });
+}
+
+function renderTeamsList(teams) {
+    let teamsHTML = '';
+    for (let k = 0; k < teams.length; k++) {
+        teamsHTML += `<li>
+                        <a href="/teampage.html?team=${encodeURIComponent(teams[k].name)}">
+                        ${teams[k].name}
+                        </a>
+                    </li>`;
+    }
+    let selector = document.getElementById('teams_list');
+    if (selector) {
+        selector.innerHTML = teamsHTML;
+    }
+}
+
+function setupTeamsSearch() {
+    const searchInput = document.getElementById('teams_search');
+    if (!searchInput) return;
+    searchInput.addEventListener('input', function() {
+        const query = searchInput.value.trim().toLowerCase();
+        const filtered = allTeamsForTeamsPage.filter(team =>
+            team.name.toLowerCase().includes(query)
+        );
+        renderTeamsList(filtered);
+    });
 }
 
 
