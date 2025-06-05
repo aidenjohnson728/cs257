@@ -306,42 +306,71 @@ function getLeaderboard(algorithm = 'USAU') {
 
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Existing code for algorithm dropdown in teampage
-    const algoDropdown = document.getElementById('algorithm-dropdown');
-    if (algoDropdown) {
-        algoDropdown.querySelectorAll('li').forEach(function(li) {
-            li.addEventListener('click', function() {
-                const algorithm = li.textContent.trim();
-                populateLineChart(algorithm);
-            });
-        });
-        // Optionally, show default chart
-        populateLineChart('USAU');
-    }
+function initializeGlobalSearchBar() {
+    const globalSearchBarContainer = document.getElementById('global-search-bar-container');
+    if (globalSearchBarContainer && !globalSearchBarContainer.hasChildNodes()) {
+        globalSearchBarContainer.innerHTML = `
+          <div class="global-search-dropdown" id="global-search-dropdown">
+            <input type="text" id="global_team_search" placeholder="Search teams..." autocomplete="off">
+            <ul id="global_team_list" class="global-team-list-dropdown"></ul>
+          </div>
+        `;
 
-    // --- Leaderboard dropdown click-to-open logic ---
-    const leaderboardDropdown = document.getElementById('leaderboard-dropdown');
-    const leaderboardButton = document.getElementById('algorithm-button');
-    if (leaderboardDropdown && leaderboardButton) {
-        leaderboardButton.addEventListener('click', function(e) {
-            e.stopPropagation();
-            leaderboardDropdown.classList.toggle('open');
-        });
-        // Close dropdown when clicking outside
-        document.addEventListener('mousedown', function(e) {
-            if (!leaderboardDropdown.contains(e.target)) {
-                leaderboardDropdown.classList.remove('open');
+        fetch('/api/teams')
+          .then(res => res.json())
+          .then(function(teams) {
+            let allTeams = teams;
+            const searchInput = document.getElementById('global_team_search');
+            const dropdown = document.getElementById('global-search-dropdown');
+            const list = document.getElementById('global_team_list');
+
+            function renderList(filtered) {
+              list.innerHTML = filtered.map(team =>
+                `<li>${team.name}</li>`
+              ).join('');
             }
-        });
-        // Optional: close dropdown when selecting an item
-        leaderboardDropdown.querySelectorAll('li').forEach(function(li) {
-            li.addEventListener('click', function() {
-                leaderboardDropdown.classList.remove('open');
+
+            renderList([]);
+
+            searchInput.addEventListener('input', function() {
+              const query = searchInput.value.trim().toLowerCase();
+              if (query.length === 0) {
+                list.innerHTML = '';
+                dropdown.classList.remove('open');
+                return;
+              }
+              const filtered = allTeams.filter(team =>
+                team.name.toLowerCase().includes(query)
+              );
+              renderList(filtered);
+              dropdown.classList.add('open');
             });
-        });
+
+            searchInput.addEventListener('focus', function() {
+              if (searchInput.value.trim().length > 0) {
+                dropdown.classList.add('open');
+              }
+            });
+
+            document.addEventListener('mousedown', function(e) {
+              if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+              }
+            });
+
+            list.addEventListener('click', function(e) {
+              if (e.target.tagName === 'LI') {
+                const teamName = e.target.textContent;
+                window.location.href = '/teampage.html?team=' + encodeURIComponent(teamName);
+              }
+            });
+          });
     }
-});
+}
+
+// Ensure the global search bar is initialized on every page
+document.addEventListener('DOMContentLoaded', initializeGlobalSearchBar);
+window.addEventListener('load', initializeGlobalSearchBar);
 
 function setupTeamSearchDropdown(slot) {
     const container = document.querySelector(slot === 1 ? '.team-search-dropdown input#team1_search' : '.team-search-dropdown input#team2_search').parentElement;

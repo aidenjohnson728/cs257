@@ -510,4 +510,60 @@ ul {
   padding: 6px 10px;
 }
 
+#global-search-bar-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 32px;
+  height: 100%;
+  z-index: 1100;
+}
+
+.global-search-dropdown {
+  position: relative;
+  width: 220px;
+  z-index: 1200;
+}
+
+.global-search-dropdown input {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  font-size: 1em;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.global-team-list-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #ccffcc;
+  border: 1px solid #ccc;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 20;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.global-team-list-dropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.global-team-list-dropdown li:hover {
+  background: #b3e6b3;
+}
+
+.global-search-dropdown.open .global-team-list-dropdown {
+  display: block !important;
+}
+
 
