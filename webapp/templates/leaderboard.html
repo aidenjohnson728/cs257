@@ -31,15 +31,17 @@
      <div id="leaderboard"></div>
    </div>
 
-
-   <div id="leaderboard-dropdown" class="dropdown" style="position:relative;">
-     <button id="algorithm-button">Choose a ranking algorithm ▼</button>
-     <ul id="algorithm-dropdown" style="display:none;">
-      <li onclick="getLeaderboard('USAU')">USAU</li>
-       <li onclick="getLeaderboard('Massey')">Massey</li>
-       <li onclick="getLeaderboard('ELO')">ELO</li>
-       <li onclick="getLeaderboard('SWCI')">SWCI</li>
-     </ul>
+   <div style="width: 50%;">
+     <div id="leaderboard-dropdown" class="dropdown" style="position:relative; display: flex; flex-direction: column; align-items: flex-start;">
+      <p>Choose a ranking algorithm:</p>
+       <button id="algorithm-button">USAU ▼</button>
+       <ul id="algorithm-dropdown" style="display:none;">
+        <li data-alg="USAU">USAU</li>
+        <li data-alg="Massey">Massey</li>
+        <li data-alg="ELO">ELO</li>
+        <li data-alg="SWCI">SWCI</li>
+       </ul>
+     </div>
    </div>
  </div>
 
@@ -90,50 +92,6 @@
       </div>
  
 
-<script>
-  document.querySelectorAll('.nav-icon').forEach(function(icon){
-    // On hover, use ligh
-    icon.parentElement.addEventListener('mouseenter', function() {
-      icon.src = icon.getAttribute('image-light');
-    });
-    // On leave, use dark
-    icon.parentElement.addEventListener('mouseleave', function() {
-      icon.src = icon.getAttribute('image-dark');
-    });
-    if (window.location.pathname === icon.parentElement.getAttribute('href')) {
-      icon.src = icon.getAttribute('image-light')
-    }
-    })
-</script>
-
-<script>
-  document.querySelectorAll('.nav-icon').forEach(function(icon){
-    var link = icon.parentElement;
-    var href = link.getAttribute('href');
-    // Add leading slash if missing
-    if (href && !href.startsWith('/')) {
-      href = '/' + href;
-    }
-    // On hover, use light
-    link.addEventListener('mouseenter', function() {
-      icon.src = icon.getAttribute('image-light');
-    });
-    // On leave use dark unless this is the current page
-    link.addEventListener('mouseleave', function() {
-      if (window.location.pathname === href) {
-        icon.src = icon.getAttribute('image-light');
-      } else {
-        icon.src = icon.getAttribute('image-dark');
-      }
-    });
-    // On page load set to light if this is current page
-    if (window.location.pathname === href) {
-      icon.src = icon.getAttribute('image-light');
-    } else {
-      icon.src = icon.getAttribute('image-dark');
-    }
-  });
-</script>
 </body>
 </html>
 

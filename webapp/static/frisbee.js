@@ -400,6 +400,107 @@ function setupTeamSearchDropdown(slot) {
 });
 }
 
+// --- Navbar icon highlight logic for all pages ---
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav-icon').forEach(function(icon){
+    var link = icon.parentElement;
+    var href = link.getAttribute('href');
+    // Add leading slash if missing
+    if (href && !href.startsWith('/')) {
+      href = '/' + href;
+    }
+    // On hover, use light
+    link.addEventListener('mouseenter', function() {
+      icon.src = icon.getAttribute('image-light');
+    });
+    // On leave use dark unless this is the current page
+    link.addEventListener('mouseleave', function() {
+      // Special case for teampage.html highlighting Teams
+      if (
+        (window.location.pathname === href) ||
+        (window.location.pathname.startsWith('/teampage') && href === '/teams.html')
+      ) {
+        icon.src = icon.getAttribute('image-light');
+      } else {
+        icon.src = icon.getAttribute('image-dark');
+      }
+    });
+    // On page load set to light if this is current page
+    if (
+      (window.location.pathname === href) ||
+      (window.location.pathname.startsWith('/teampage') && href === '/teams.html')
+    ) {
+      icon.src = icon.getAttribute('image-light');
+    } else {
+      icon.src = icon.getAttribute('image-dark');
+    }
+  });
+});
+
+// --- Dropdown logic for leaderboard algorithm selector ---
+document.addEventListener('DOMContentLoaded', function() {
+  var leaderboardDropdown = document.getElementById('leaderboard-dropdown');
+  var leaderboardButton = document.getElementById('algorithm-button');
+  var leaderboardUl = document.getElementById('algorithm-dropdown');
+  // Only run on leaderboard.html
+  if (leaderboardDropdown && leaderboardButton && leaderboardUl) {
+    // Set default button text
+    leaderboardButton.textContent = 'USAU ▼';
+    leaderboardButton.addEventListener('click', function(e) {
+      e.stopPropagation();
+      leaderboardDropdown.classList.toggle('open');
+      leaderboardUl.style.display = leaderboardDropdown.classList.contains('open') ? 'block' : 'none';
+    });
+    // Hide dropdown when clicking outside
+    document.addEventListener('mousedown', function(e) {
+      if (!leaderboardDropdown.contains(e.target)) {
+        leaderboardDropdown.classList.remove('open');
+        leaderboardUl.style.display = 'none';
+      }
+    });
+    // When an option is clicked, close the dropdown, update button, and call getLeaderboard
+    leaderboardUl.querySelectorAll('li').forEach(function(li) {
+      li.addEventListener('click', function() {
+        leaderboardDropdown.classList.remove('open');
+        leaderboardUl.style.display = 'none';
+        leaderboardButton.textContent = li.textContent + ' ▼';
+        getLeaderboard(li.getAttribute('data-alg') || li.textContent.trim());
+      });
+    });
+  }
+});
+
+// --- Dropdown logic for teampage algorithm selector ---
+document.addEventListener('DOMContentLoaded', function() {
+  var algoDropdownContainer = document.getElementById('algorithm-dropdown-container');
+  var algoButton = document.getElementById('algorithm-button');
+  var algoUl = document.getElementById('algorithm-dropdown');
+  // Only run on teampage.html
+  if (algoDropdownContainer && algoButton && algoUl) {
+    // Set default button text
+    algoButton.textContent = 'USAU ▼';
+    algoButton.onclick = function(e) {
+      e.stopPropagation();
+      algoUl.style.display = (algoUl.style.display === 'block') ? 'none' : 'block';
+    };
+    // Hide dropdown when clicking outside
+    document.addEventListener('mousedown', function(e) {
+      if (!algoButton.contains(e.target) && !algoUl.contains(e.target)) {
+        algoUl.style.display = 'none';
+      }
+    });
+    // Add click handlers for algorithm options
+    algoUl.querySelectorAll('li').forEach(function(li) {
+      li.addEventListener('click', function() {
+        var algorithm = li.getAttribute('data-alg') || li.textContent.trim();
+        algoButton.textContent = algorithm + ' ▼';
+        algoUl.style.display = 'none';
+        populateLineChart(algorithm);
+      });
+    });
+  }
+});
+
 
 
 

@@ -26,12 +26,12 @@
         <h3 id="rank-header"></h3>
         <p>Choose your desired algorithm:</p>
         <div class="dropdown" id="algorithm-dropdown-container">
-          <button id="algorithm-button">Choose a ranking algorithm ▼</button>
+          <button id="algorithm-button">USAU ▼</button>
           <ul id="algorithm-dropdown" style="display:none;">
-            <li>USAU</li>
-            <li>Massey</li>
-            <li>ELO</li>
-            <li>SWCI</li>
+            <li data-alg="USAU">USAU</li>
+            <li data-alg="Massey">Massey</li>
+            <li data-alg="ELO">ELO</li>
+            <li data-alg="SWCI">SWCI</li>
           </ul>
         </div>   
         <div class="chart-container" id="chart-container">
@@ -83,57 +83,5 @@
               </li>               
         </ul>
       </div>
- 
-<script>
-  document.querySelectorAll('.nav-icon').forEach(function(icon){
-    var link = icon.parentElement;
-    var href = link.getAttribute('href');
-    // Add leading slash if missing
-    if (href && !href.startsWith('/')) {
-      href = '/' + href;
-    }
-    // On hover, use light
-    link.addEventListener('mouseenter', function() {
-      icon.src = icon.getAttribute('image-light');
-    });
-    // On leave use dark unless this is the current page
-    link.addEventListener('mouseleave', function() {
-      if (
-        (window.location.pathname === href) ||
-        (window.location.pathname.startsWith('/teampage') && href === '/teams.html')
-      ) {
-        icon.src = icon.getAttribute('image-light');
-      } else {
-        icon.src = icon.getAttribute('image-dark');
-      }
-    });
-    // On page load set to light if this is current page
-    if (
-      (window.location.pathname === href) ||
-      (window.location.pathname.startsWith('/teampage') && href === '/teams.html')
-    ) {
-      icon.src = icon.getAttribute('image-light');
-    } else {
-      icon.src = icon.getAttribute('image-dark');
-    }
-  });
-</script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var button = document.getElementById('algorithm-button');
-  var dropdown = document.getElementById('algorithm-dropdown');
-  if (button && dropdown) {
-    button.onclick = function() {
-      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    };
-    // Hide dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.style.display = 'none';
-      }
-    });
-  }
-});
-</script>
 </body>
 </html>
