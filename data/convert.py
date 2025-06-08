@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Made by Aiden Johnson and Alden Harcourt
-# Sections 5, 6, 7, SWCI, ELO, Massey, and USAU rankings with debug
+# SWCI, ELO, Massey, and USAU rankings with debug tools primarily written by ChatGPT
 
 import sys
 import csv

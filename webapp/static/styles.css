@@ -4,7 +4,10 @@
   Handles layout, navigation, and component appearance.
 */
 
-/* --- Navbar and Topbar --- */
+/* --- Navbar and Topbar ---
+   Styles for the fixed sidebar navigation and topbar.
+   Sidebar is on the left, topbar is at the top.
+*/
 nav,
 #navbar {
   position: fixed;
@@ -64,7 +67,11 @@ body {
   background-color: #f0faf0; 
 }
 
-/* --- Dropdown Menus --- */
+/* --- Dropdown Menus ---
+   Styles for dropdown menus used throughout the site, including
+   algorithm selectors and team search dropdowns.
+   Dropdowns are white by default, green on hover.
+*/
 .dropdown {
   position: relative;
   display: inline-block;       
@@ -102,7 +109,10 @@ body {
   background: #b3e6b3;
 }
 
-/* --- MTIBTYT Page Layout --- */
+/* --- MTIBTYT Page Layout ---
+   Styles for the "My Team Is Better Than Your Team" comparison page,
+   including the team selection panels and chain display.
+*/
 .panel-container {
   margin-left: 140px;
   margin-top: 20px;
@@ -179,7 +189,9 @@ body {
   background-color: #b3e6b3;
 }
 
-/* --- Teams Page Layout --- */
+/* --- Teams Page Layout ---
+   Styles for the teams listing and search on teams.html.
+*/
 #teams-container {
   display: flex;
   flex-wrap: wrap;
@@ -210,7 +222,9 @@ body {
   display: flex;
 }
 
-/* --- Rank Panel --- */
+/* --- Rank Panel ---
+   Styles for the ranking panel and chart on teampage.html.
+*/
 #rank {
   display: flex;           
   flex-direction: column;  
@@ -221,7 +235,9 @@ body {
   height: auto;
 }
 
-/* --- Leaderboard Page Layout --- */
+/* --- Leaderboard Page Layout ---
+   Styles for the leaderboard display and algorithm dropdown.
+*/
 #leaderboard-container {
   display: flex;
   align-items: flex-start;
@@ -230,7 +246,9 @@ body {
   margin-top: 0;              
 }
 
-/* --- Box and Table Styling --- */
+/* --- Box and Table Styling ---
+   Styles for the main content boxes and tables.
+*/
 .leaderboard-box {
   width: 65%;                
   max-width: 500px;           
@@ -256,7 +274,9 @@ body {
   font-weight: bold;
 }
 
-/* --- Leaderboard Dropdown --- */
+/* --- Leaderboard Dropdown ---
+   Styles for the algorithm dropdown on leaderboard.html.
+*/
 #leaderboard-dropdown {
   display: flex;
   width: 35%;
@@ -309,7 +329,9 @@ body {
  }
  
 
-/* --- Chart Container --- */
+/* --- Chart Container ---
+   Styles for the Plotly chart container.
+*/
 .chart-container {
   width: 100%;
   max-width: 800px;  
@@ -322,7 +344,9 @@ body {
   height: 100%;
 }
 
-/* --- General Alignment and Spacing --- */
+/* --- General Alignment and Spacing ---
+   General alignment, and spacing styles.
+*/
 body,
 #teams-container,
 #navbar,
@@ -381,7 +405,9 @@ ul {
   align-self: flex-start;
 }
 
-/* --- Home Page Layout --- */
+/* --- Home Page Layout ---
+   Styles for the home page flex layout and images.
+*/
 #home-flex {
   display: flex;
   flex-direction: row;
@@ -412,7 +438,9 @@ ul {
   display: block;
 }
 
-/* --- Team Search Dropdown --- */
+/* --- Team Search Dropdown ---
+   Styles for the team search dropdowns on MTIBTYT and other pages.
+*/
 .team-search-dropdown {
   position: relative;
   width: 100%;
@@ -450,7 +478,9 @@ ul {
   display: block !important;
 }
 
-/* --- Algorithm Dropdown Styling --- */
+/* --- Algorithm Dropdown Styling ---
+   Styles for the algorithm dropdown button and list.
+*/
 #algorithm-button {
   background: #ccffcc;
   border: 1px solid #aaa;
