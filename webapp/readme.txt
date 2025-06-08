@@ -11,4 +11,4 @@ STATUS: All features are up an runnning as of 6/8/2025 (the writing of this file
         includes the leaderboard, ranking history, games history, MTIBTYT, ranking algorithms,
         and even more awesome features.
 
-Icons designed by Aiden Johnson.
+Icons and logo designed by Aiden Johnson.
