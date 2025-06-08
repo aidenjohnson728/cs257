@@ -296,6 +296,19 @@ body {
   background: #b3e6b3;
 }
 
+#info-paragraph {
+  display: block;                
+  width: 57%;
+  text-align: left;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ }
+ 
+
 /* --- Chart Container --- */
 .chart-container {
   width: 100%;
