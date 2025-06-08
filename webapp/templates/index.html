@@ -8,18 +8,22 @@
 
     <!-- CSS and HTML for background video repurposed from https://www.w3schools.com/howto/howto_css_fullscreen_video.asp -->>
     <style>
-      /* Simple background video styling */
+      /* Video fits inside sidebar/topbar borders */
       .bg-video {
         position: fixed;
-        top: 0; left: 0;
-        width: 100vw; height: 100vh;
+        top: 70px;           /* height of topbar */
+        left: 0;             /* extend under sidebar */
+        width: 100vw;     
+        height: calc(100vh - 70px);
         object-fit: cover;
         z-index: -2;
       }
       .bg-overlay {
         position: fixed;
-        top: 0; left: 0;
-        width: 100vw; height: 100vh;
+        top: 70px;
+        left: 0;             /* extend under sidebar */
+        width: 100vw;        /* fill the whole viewport width */
+        height: calc(100vh - 70px);
         background: rgba(0,0,0,0.45);
         z-index: -1;
       }
@@ -34,6 +38,9 @@
         z-index: 10;
         text-align: center;
         letter-spacing: 2px;
+        /* Adjust for sidebar/topbar offset */
+        margin-left: 75px;
+        margin-top: 35px;
       }
       body {
         margin: 0;
