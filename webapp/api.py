@@ -5,27 +5,26 @@ Defines the API endpoints for the Frisbee Stats web app.
 Handles database queries and returns JSON responses.
 """
 
-import psycopg2           
-import flask              
-import sys               
-import config            
-from collections import deque 
-import argparse           
+import psycopg2
+import flask
+import sys
+import config
+from collections import deque
+import argparse
 
 
 api = flask.Blueprint('api', __name__)
 
 
 def get_connection():
-    """Return a new database connection using credentials from config."""
-    try:
-        return psycopg2.connect(
-            database=config.database,
-            user=config.user,
-            password=config.password
-        )
-    except Exception as e:
-        print(e, file=sys.stderr)
+    # Let any connection errors propagate
+    return psycopg2.connect(
+        dbname=config.database,
+        user=config.user,
+        password=config.password,
+        host=config.host,
+        port=config.port
+    )
 
 
 # Endpoint: /leaderboard?algorithm=<SWCI|ELO|Massey>
@@ -38,8 +37,8 @@ def leaderboard_endpoint():
     if algo not in ('SWCI', 'ELO', 'Massey', 'USAU'):
         return flask.jsonify({'error': 'Invalid ranking algorithm'}), 400
 
-    lb = get_leaderboard(algo)    
-    return flask.jsonify(lb)       
+    lb = get_leaderboard(algo)
+    return flask.jsonify(lb)
 
 
 def get_leaderboard(algorithm):
